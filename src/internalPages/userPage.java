@@ -10,7 +10,9 @@ import bdrApp.CitizenForm;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -381,6 +383,8 @@ Color navcolor = new Color(41,50,57);
     }//GEN-LAST:event_signinButtonMouseExited
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
+      JFrame mainFrame = (JFrame)SwingUtilities.getWindowAncestor(this);
+        mainFrame.dispose();
         CitizenForm cs = new CitizenForm();
         cs.setVisible(true);
         this.dispose();

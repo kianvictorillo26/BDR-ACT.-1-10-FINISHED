@@ -14,6 +14,9 @@ public class dashBoard extends javax.swing.JFrame {
      */
     public dashBoard() {
         initComponents();
+        
+        dashBoardPage dbp = new dashBoardPage();
+        maindesktop.add(dbp).setVisible(true);
     }
     Color navcolor = new Color(41,50,57);  
     Color headcolor = new Color(137,207,24); 
@@ -328,7 +331,7 @@ public class dashBoard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JDesktopPane maindesktop;
+    public javax.swing.JDesktopPane maindesktop;
     private javax.swing.JLabel maximize;
     private javax.swing.JPanel navbar;
     private javax.swing.JPanel reportpanel;

@@ -5,6 +5,8 @@
  */
 package bdrApp;
 
+import internalPages.userPage;
+
 /**
  *
  * @author KIAN VICTORILLO
@@ -349,7 +351,11 @@ public class CitizenForm extends javax.swing.JFrame {
     }//GEN-LAST:event_maximizeMouseClicked
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
-        System.exit(0);
+        this.dispose();
+        dashBoard dash = new dashBoard();
+        dash.setVisible(true);
+         userPage up = new userPage();
+        dash.maindesktop.add(up).setVisible(true);
     }//GEN-LAST:event_closeMouseClicked
 
     /**
