@@ -5,7 +5,7 @@
  */
 package bdrApp;
 
-import java.awt.BasicStroke;
+import java.awt.BasicStroke;  
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
