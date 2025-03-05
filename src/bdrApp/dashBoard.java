@@ -95,6 +95,11 @@ public class dashBoard extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("USER PAGE");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
         userpanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 28));
 
         navbar.add(userpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 170, 50));
@@ -285,6 +290,13 @@ public class dashBoard extends javax.swing.JFrame {
         settingsPage set = new settingsPage();
         maindesktop.add(set).setVisible(true);
     }//GEN-LAST:event_accountMouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        userPage up = new userPage();
+        up.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel3MouseClicked
      
     /**
      * @param args the command line arguments

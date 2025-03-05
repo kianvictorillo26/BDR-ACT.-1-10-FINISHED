@@ -5,8 +5,12 @@
  */
 package bdrApp;
 
+import Config.config;
+import internalPages.userPage;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,6 +27,25 @@ public class loginForm extends javax.swing.JFrame {
      */
     public loginForm() {
         initComponents();
+    }
+    static String status;
+    static String type;
+    
+    public static boolean loging_in(String username, String password){
+        config conf = new config();
+        try{
+            String query = "SELECT * FROM users WHERE uname = '"+username+"' AND pname = '"+password+"'";
+            ResultSet resultSet = conf.getData(query);
+            if(resultSet.next()){
+                status = resultSet.getString("status");
+                type = resultSet.getString("account_type");
+                return true;
+            }else{
+                return false;
+            }
+        }catch(SQLException ex){
+            return false;
+        }
     }
 Color navcolor = new Color(41,50,57);  
     Color headcolor = new Color(137,207,24); 
@@ -307,9 +330,24 @@ Color navcolor = new Color(41,50,57);
     }//GEN-LAST:event_signinButton1MouseExited
 
     private void logInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInMouseClicked
-        dashBoard dash = new dashBoard();
-        this.dispose();
-        dash.setVisible(true);
+        if(loging_in(userName.getText(), userPass.getText())){
+            if(!status.equals("Active")){
+                JOptionPane.showMessageDialog(null, "In-Active Account, Contact the Admin!");
+            }else{
+                JOptionPane.showMessageDialog(null, "Login Successfully!");
+                if(type.equals("ADMIN")){
+                    dashBoard admin = new dashBoard();
+                    admin.setVisible(true);
+                    this.dispose();
+                }else{
+                    CitizenForm user = new CitizenForm();
+                    user.setVisible(true);
+                    this.dispose();
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Login Unsuccessfull!");
+        }
     }//GEN-LAST:event_logInMouseClicked
 
     private void logInMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInMouseEntered
@@ -321,7 +359,9 @@ Color navcolor = new Color(41,50,57);
     }//GEN-LAST:event_logInMouseExited
 
     private void creatAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creatAccountMouseClicked
-
+        registrationForm rf = new registrationForm();
+        rf.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_creatAccountMouseClicked
 
     private void maximizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maximizeMouseClicked

@@ -5,8 +5,11 @@
  */
 package bdrApp;
 
+import Config.config;
 import java.awt.BasicStroke;  
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,6 +26,34 @@ public class registrationForm extends javax.swing.JFrame {
      */
     public registrationForm() {
         initComponents();
+    }
+    public static String emails, usernames;
+    
+    public boolean duplicateChecker(){
+        config conf = new config();
+        try{
+            String query = "SELECT * FROM users WHERE uname = '"+uname.getText()+"' OR email = '"+email.getText()+"'";
+            ResultSet resultSet = conf.getData(query);
+            
+            if(resultSet.next()){
+                emails = resultSet.getString("email");
+                if(emails.equals(email.getText())){
+                    JOptionPane.showMessageDialog(null, "Email is Already Used!");
+                    email.setText(null);
+                }
+                usernames = resultSet.getString("uname");
+                if(usernames.equals(uname.getText())){
+                    JOptionPane.showMessageDialog(null, "Username is Already Used!");
+                    uname.setText(null);
+                }
+                return true;
+            }else{
+                return false;
+            }
+        }catch(SQLException ex){
+            System.out.println(""+ex);
+            return false;
+        }
     }
 Color navcolor = new Color(41,50,57);  
     Color headcolor = new Color(137,207,24); 
@@ -51,20 +82,20 @@ Color navcolor = new Color(41,50,57);
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        search2 = new javax.swing.JTextField();
+        fname = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        search6 = new javax.swing.JTextField();
+        lname = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        search4 = new javax.swing.JTextField();
+        address = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        search5 = new javax.swing.JTextField();
+        contact = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        search7 = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        search8 = new javax.swing.JTextField();
+        uname = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        search9 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        pname = new javax.swing.JTextField();
+        utype = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -102,109 +133,109 @@ Color navcolor = new Color(41,50,57);
         jLabel6.setText("First Name:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, 30));
 
-        search2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        search2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        search2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        search2.setOpaque(false);
-        search2.addActionListener(new java.awt.event.ActionListener() {
+        fname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        fname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        fname.setOpaque(false);
+        fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search2ActionPerformed(evt);
+                fnameActionPerformed(evt);
             }
         });
-        jPanel2.add(search2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 180, 30));
+        jPanel2.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 180, 30));
 
         jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel11.setText("Last Name:");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 30));
 
-        search6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        search6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        search6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        search6.setOpaque(false);
-        search6.addActionListener(new java.awt.event.ActionListener() {
+        lname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        lname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        lname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        lname.setOpaque(false);
+        lname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search6ActionPerformed(evt);
+                lnameActionPerformed(evt);
             }
         });
-        jPanel2.add(search6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 180, 30));
+        jPanel2.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 180, 30));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel8.setText("Address:");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, 30));
 
-        search4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        search4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        search4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        search4.setOpaque(false);
-        search4.addActionListener(new java.awt.event.ActionListener() {
+        address.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        address.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        address.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        address.setOpaque(false);
+        address.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search4ActionPerformed(evt);
+                addressActionPerformed(evt);
             }
         });
-        jPanel2.add(search4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 180, 30));
+        jPanel2.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 180, 30));
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel9.setText("Contact Number:");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, 30));
 
-        search5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        search5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        search5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        search5.setOpaque(false);
-        search5.addActionListener(new java.awt.event.ActionListener() {
+        contact.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        contact.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        contact.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        contact.setOpaque(false);
+        contact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search5ActionPerformed(evt);
+                contactActionPerformed(evt);
             }
         });
-        jPanel2.add(search5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 180, 30));
+        jPanel2.add(contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 180, 30));
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel10.setText("Email:");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, 30));
 
-        search7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        search7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        search7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        search7.setOpaque(false);
-        search7.addActionListener(new java.awt.event.ActionListener() {
+        email.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        email.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        email.setOpaque(false);
+        email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search7ActionPerformed(evt);
+                emailActionPerformed(evt);
             }
         });
-        jPanel2.add(search7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 180, 30));
+        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 180, 30));
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel12.setText("User Name:");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, 30));
 
-        search8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        search8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        search8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        search8.setOpaque(false);
-        search8.addActionListener(new java.awt.event.ActionListener() {
+        uname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        uname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        uname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        uname.setOpaque(false);
+        uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search8ActionPerformed(evt);
+                unameActionPerformed(evt);
             }
         });
-        jPanel2.add(search8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 180, 30));
+        jPanel2.add(uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 180, 30));
 
         jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel13.setText("User Type:");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, -1, 30));
 
-        search9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        search9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        search9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        search9.setOpaque(false);
-        search9.addActionListener(new java.awt.event.ActionListener() {
+        pname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        pname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        pname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        pname.setOpaque(false);
+        pname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search9ActionPerformed(evt);
+                pnameActionPerformed(evt);
             }
         });
-        jPanel2.add(search9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 180, 30));
+        jPanel2.add(pname, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 180, 30));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CITIZEN", "ADMIN" }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 180, 30));
+        utype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CITIZEN", "ADMIN" }));
+        jPanel2.add(utype, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 180, 30));
 
         jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel14.setText("Password:");
@@ -218,6 +249,11 @@ Color navcolor = new Color(41,50,57);
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("REGISTER");
         jLabel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -283,33 +319,60 @@ Color navcolor = new Color(41,50,57);
       }         
     }//GEN-LAST:event_closeMouseClicked
 
-    private void search9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search9ActionPerformed
+    private void pnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_search9ActionPerformed
+    }//GEN-LAST:event_pnameActionPerformed
 
-    private void search8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search8ActionPerformed
+    private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_search8ActionPerformed
+    }//GEN-LAST:event_unameActionPerformed
 
-    private void search7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search7ActionPerformed
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_search7ActionPerformed
+    }//GEN-LAST:event_emailActionPerformed
 
-    private void search5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search5ActionPerformed
+    private void contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_search5ActionPerformed
+    }//GEN-LAST:event_contactActionPerformed
 
-    private void search4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search4ActionPerformed
+    private void addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_search4ActionPerformed
+    }//GEN-LAST:event_addressActionPerformed
 
-    private void search6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search6ActionPerformed
+    private void lnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_search6ActionPerformed
+    }//GEN-LAST:event_lnameActionPerformed
 
-    private void search2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search2ActionPerformed
+    private void fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_search2ActionPerformed
+    }//GEN-LAST:event_fnameActionPerformed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        if(fname.getText().isEmpty()
+            || lname.getText().isEmpty()
+            || email.getText().isEmpty()
+            || uname.getText().isEmpty()
+            || pname.getText().isEmpty()
+            || contact.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "All Fields are Required!");
+        }else if(pname.getText().length()<8){
+            JOptionPane.showMessageDialog(null, "Password Must be longer than 8!");
+        }else if(duplicateChecker()){
+            System.out.println("Duplicate Exist!");
+        }else{
+            config conf = new config();
+            if(conf.insertData("INSERT INTO users (fname, lname, address, account_type, email, uname, pname, contact, status) "
+                + "VALUES ('"+fname.getText()+"', '"+lname.getText()+"', '"+address.getText()+"'"
+                + ", '"+utype.getSelectedItem()+"', '"+email.getText()+"', '"+uname.getText()+"'"
+                + ", '"+pname.getText()+"', '"+contact.getText()+"', 'Pending')")==1){
+            JOptionPane.showMessageDialog(null, "Registered Successfully!");
+            loginForm login = new loginForm();
+            login.setVisible(true);
+            this.dispose();
+            }
+        }
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -350,8 +413,11 @@ Color navcolor = new Color(41,50,57);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField address;
     private javax.swing.JLabel close;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField contact;
+    private javax.swing.JTextField email;
+    private javax.swing.JTextField fname;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -367,13 +433,10 @@ Color navcolor = new Color(41,50,57);
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JTextField lname;
     private javax.swing.JLabel maximize;
-    private javax.swing.JTextField search2;
-    private javax.swing.JTextField search4;
-    private javax.swing.JTextField search5;
-    private javax.swing.JTextField search6;
-    private javax.swing.JTextField search7;
-    private javax.swing.JTextField search8;
-    private javax.swing.JTextField search9;
+    private javax.swing.JTextField pname;
+    private javax.swing.JTextField uname;
+    private javax.swing.JComboBox<String> utype;
     // End of variables declaration//GEN-END:variables
 }
