@@ -233,7 +233,7 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 160, 60));
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(50, 120, 680, 280);
+        jPanel2.setBounds(50, 130, 680, 280);
 
         maximize.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         maximize.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
