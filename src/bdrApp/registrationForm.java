@@ -49,17 +49,23 @@ Color navcolor = new Color(41,50,57);
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        userName = new javax.swing.JTextField();
-        userPass = new javax.swing.JPasswordField();
-        cancel = new javax.swing.JPanel();
-        signinButton = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        showpass = new javax.swing.JCheckBox();
-        logIn = new javax.swing.JPanel();
-        signinButton1 = new javax.swing.JLabel();
-        creatAccount = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        search2 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        search6 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        search4 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        search5 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        search7 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        search8 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        search9 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         maximize = new javax.swing.JLabel();
@@ -81,145 +87,153 @@ Color navcolor = new Color(41,50,57);
         jLabel1.setBounds(80, 30, 590, 60);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel3.setText("LOGIN PAGE");
+        jLabel3.setText("REGISTRATION PAGE ");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(300, 90, 140, 30);
+        jLabel3.setBounds(280, 90, 240, 30);
 
         jPanel2.setBackground(new java.awt.Color(137, 207, 241));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel4.setText("BARANGGAY DOCUMENT REQUEST");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 280, 30));
-
-        jLabel5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel5.setText("Management System");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
-
-        userName.setBackground(new java.awt.Color(137, 207, 241));
-        userName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        userName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Username:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
-        userName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameActionPerformed(evt);
-            }
-        });
-        jPanel2.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 220, 50));
-
-        userPass.setBackground(new java.awt.Color(137, 207, 241));
-        userPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        userPass.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
-        userPass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userPassActionPerformed(evt);
-            }
-        });
-        jPanel2.add(userPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 220, 50));
-
-        cancel.setBackground(new java.awt.Color(137, 207, 241));
-        cancel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cancelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cancelMouseExited(evt);
-            }
-        });
-        cancel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        signinButton.setBackground(new java.awt.Color(137, 207, 241));
-        signinButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        signinButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        signinButton.setText("CANCEL");
-        signinButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                signinButtonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                signinButtonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                signinButtonMouseExited(evt);
-            }
-        });
-        cancel.add(signinButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 12, 70, -1));
-
-        jPanel2.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 130, 40));
 
         jPanel9.setBackground(new java.awt.Color(137, 207, 241));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 240, 20));
 
-        showpass.setBackground(new java.awt.Color(137, 207, 241));
-        showpass.setText("Show Password");
-        showpass.addActionListener(new java.awt.event.ActionListener() {
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel6.setText("First Name:");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, 30));
+
+        search2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        search2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        search2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        search2.setOpaque(false);
+        search2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showpassActionPerformed(evt);
+                search2ActionPerformed(evt);
             }
         });
-        jPanel2.add(showpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        jPanel2.add(search2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 180, 30));
 
-        logIn.setBackground(new java.awt.Color(137, 207, 241));
-        logIn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        logIn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logInMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                logInMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                logInMouseExited(evt);
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel11.setText("Last Name:");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 30));
+
+        search6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        search6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        search6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        search6.setOpaque(false);
+        search6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                search6ActionPerformed(evt);
             }
         });
-        logIn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(search6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 180, 30));
 
-        signinButton1.setBackground(new java.awt.Color(137, 207, 241));
-        signinButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        signinButton1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        signinButton1.setText("LOG IN");
-        signinButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                signinButton1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                signinButton1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                signinButton1MouseExited(evt);
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel8.setText("Address:");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, 30));
+
+        search4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        search4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        search4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        search4.setOpaque(false);
+        search4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                search4ActionPerformed(evt);
             }
         });
-        logIn.add(signinButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 70, -1));
+        jPanel2.add(search4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 180, 30));
 
-        jPanel2.add(logIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 130, 40));
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel9.setText("Contact Number:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, 30));
 
-        creatAccount.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        creatAccount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        creatAccount.setText("New User? Click Here to Register.");
-        creatAccount.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                creatAccountMouseClicked(evt);
+        search5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        search5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        search5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        search5.setOpaque(false);
+        search5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                search5ActionPerformed(evt);
             }
         });
-        jPanel2.add(creatAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 220, 30));
+        jPanel2.add(search5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 180, 30));
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel10.setText("Email:");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, 30));
+
+        search7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        search7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        search7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        search7.setOpaque(false);
+        search7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                search7ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(search7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 180, 30));
+
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel12.setText("User Name:");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, 30));
+
+        search8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        search8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        search8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        search8.setOpaque(false);
+        search8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                search8ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(search8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 180, 30));
+
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel13.setText("User Type:");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, -1, 30));
+
+        search9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        search9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        search9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        search9.setOpaque(false);
+        search9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                search9ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(search9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 180, 30));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CITIZEN", "ADMIN" }));
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 180, 30));
+
+        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel14.setText("Password:");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, -1, 30));
+
+        jPanel3.setBackground(new java.awt.Color(110, 177, 214));
+        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel2.setBackground(new java.awt.Color(110, 177, 214));
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("REGISTER");
+        jLabel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 160, 60));
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(40, 120, 310, 280);
-
-        jPanel3.setBackground(new java.awt.Color(137, 207, 241));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_Folder/bdrLogo.png"))); // NOI18N
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 280));
-
-        jPanel1.add(jPanel3);
-        jPanel3.setBounds(350, 120, 340, 280);
+        jPanel2.setBounds(50, 120, 680, 280);
 
         maximize.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         maximize.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -258,72 +272,6 @@ Color navcolor = new Color(41,50,57);
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNameActionPerformed
-
-    private void userPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userPassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userPassActionPerformed
-
-    private void signinButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinButtonMouseClicked
-
-    }//GEN-LAST:event_signinButtonMouseClicked
-
-    private void signinButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinButtonMouseEntered
-
-    }//GEN-LAST:event_signinButtonMouseEntered
-
-    private void signinButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinButtonMouseExited
-      
-    }//GEN-LAST:event_signinButtonMouseExited
-
-    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-
-    }//GEN-LAST:event_cancelMouseClicked
-
-    private void cancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseEntered
-        buttonBorderAnimation(cancel);
-    }//GEN-LAST:event_cancelMouseEntered
-
-    private void cancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseExited
-        buttonDefaultColor(cancel);
-    }//GEN-LAST:event_cancelMouseExited
-
-    private void showpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpassActionPerformed
-
-    }//GEN-LAST:event_showpassActionPerformed
-
-    private void signinButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinButton1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_signinButton1MouseClicked
-
-    private void signinButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinButton1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_signinButton1MouseEntered
-
-    private void signinButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinButton1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_signinButton1MouseExited
-
-    private void logInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInMouseClicked
-        dashBoard dash = new dashBoard();
-        this.dispose();
-        dash.setVisible(true);
-    }//GEN-LAST:event_logInMouseClicked
-
-    private void logInMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInMouseEntered
-        buttonBorderAnimation(logIn);
-    }//GEN-LAST:event_logInMouseEntered
-
-    private void logInMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInMouseExited
-        buttonDefaultColor(logIn);
-    }//GEN-LAST:event_logInMouseExited
-
-    private void creatAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creatAccountMouseClicked
-
-    }//GEN-LAST:event_creatAccountMouseClicked
-
     private void maximizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maximizeMouseClicked
       setState(ICONIFIED);
     }//GEN-LAST:event_maximizeMouseClicked
@@ -334,6 +282,34 @@ Color navcolor = new Color(41,50,57);
             System.exit(0);
       }         
     }//GEN-LAST:event_closeMouseClicked
+
+    private void search9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_search9ActionPerformed
+
+    private void search8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_search8ActionPerformed
+
+    private void search7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_search7ActionPerformed
+
+    private void search5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_search5ActionPerformed
+
+    private void search4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_search4ActionPerformed
+
+    private void search6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_search6ActionPerformed
+
+    private void search2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_search2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,24 +350,30 @@ Color navcolor = new Color(41,50,57);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel cancel;
     private javax.swing.JLabel close;
-    private javax.swing.JLabel creatAccount;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JPanel logIn;
     private javax.swing.JLabel maximize;
-    private javax.swing.JCheckBox showpass;
-    private javax.swing.JLabel signinButton;
-    private javax.swing.JLabel signinButton1;
-    private javax.swing.JTextField userName;
-    private javax.swing.JPasswordField userPass;
+    private javax.swing.JTextField search2;
+    private javax.swing.JTextField search4;
+    private javax.swing.JTextField search5;
+    private javax.swing.JTextField search6;
+    private javax.swing.JTextField search7;
+    private javax.swing.JTextField search8;
+    private javax.swing.JTextField search9;
     // End of variables declaration//GEN-END:variables
 }
