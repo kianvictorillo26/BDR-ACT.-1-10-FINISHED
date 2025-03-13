@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package bdrApp;
 
+import Config.Session;
 import Config.config;
 import internalPages.userPage;
 import java.awt.BasicStroke;
@@ -39,6 +36,16 @@ public class loginForm extends javax.swing.JFrame {
             if(resultSet.next()){
                 status = resultSet.getString("status");
                 type = resultSet.getString("account_type");
+                Session sess = Session.getInstance();
+                    sess.setUid(resultSet.getString("U_Id"));
+                    sess.setFname(resultSet.getString("fname"));
+                    sess.setLname(resultSet.getString("lname"));
+                    sess.setAddress(resultSet.getString("addresss"));
+                    sess.setAccountType(resultSet.getString("account_type"));
+                    sess.setEmail(resultSet.getString("email"));
+                    sess.setContact(resultSet.getString("contact"));
+                    sess.setUname(resultSet.getString("uname"));
+                    sess.setStatus(resultSet.getString("status"));
                 return true;
             }else{
                 return false;
@@ -336,11 +343,11 @@ Color navcolor = new Color(41,50,57);
             }else{
                 JOptionPane.showMessageDialog(null, "Login Successfully!");
                 if(type.equals("ADMIN")){
-                    dashBoard admin = new dashBoard();
+                    adminDashBoard admin = new adminDashBoard();
                     admin.setVisible(true);
                     this.dispose();
                 }else{
-                    CitizenForm user = new CitizenForm();
+                    citizenDashBoard user = new citizenDashBoard();
                     user.setVisible(true);
                     this.dispose();
                 }

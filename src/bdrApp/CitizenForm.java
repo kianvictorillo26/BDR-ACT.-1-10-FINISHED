@@ -352,7 +352,7 @@ public class CitizenForm extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         this.dispose();
-        dashBoard dash = new dashBoard();
+        adminDashBoard dash = new adminDashBoard();
         dash.setVisible(true);
          userPage up = new userPage();
         dash.maindesktop.add(up).setVisible(true);

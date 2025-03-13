@@ -220,8 +220,8 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 180, 30));
 
         jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel13.setText("User Type:");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, -1, 30));
+        jLabel13.setText("Password:");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, 30));
 
         pname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         pname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -238,8 +238,8 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(utype, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 180, 30));
 
         jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel14.setText("Password:");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, -1, 30));
+        jLabel14.setText("User Type:");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, 30));
 
         jPanel3.setBackground(new java.awt.Color(110, 177, 214));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));

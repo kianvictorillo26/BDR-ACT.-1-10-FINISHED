@@ -1,18 +1,19 @@
 
 package bdrApp;
 
+import Config.Session;
 import java.awt.Color;
 import InternalPages.*;
 import internalPages.userPage;
 import internalPages.dashBoardPage;
 import internalPages.settingsPage;
 
-public class dashBoard extends javax.swing.JFrame {
+public class adminDashBoard extends javax.swing.JFrame {
 
     /**
      * Creates new form dashBoard
      */
-    public dashBoard() {
+    public adminDashBoard() {
         initComponents();
         
         dashBoardPage dbp = new dashBoardPage();
@@ -41,6 +42,8 @@ public class dashBoard extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         account = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        acc_name = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         close = new javax.swing.JLabel();
         maximize = new javax.swing.JLabel();
@@ -48,6 +51,11 @@ public class dashBoard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(123, 181, 104));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -73,7 +81,7 @@ public class dashBoard extends javax.swing.JFrame {
         jLabel2.setText("REPORT PAGE");
         reportpanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 28));
 
-        navbar.add(reportpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 170, 50));
+        navbar.add(reportpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 170, 50));
 
         userpanel.setBackground(new java.awt.Color(41, 50, 57));
         userpanel.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,9 +108,9 @@ public class dashBoard extends javax.swing.JFrame {
                 jLabel3MouseClicked(evt);
             }
         });
-        userpanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 28));
+        userpanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 170, 28));
 
-        navbar.add(userpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 170, 50));
+        navbar.add(userpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 170, 60));
 
         dashpanel.setBackground(new java.awt.Color(41, 50, 57));
         dashpanel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -125,7 +133,7 @@ public class dashBoard extends javax.swing.JFrame {
         jLabel4.setText("DASHBOARD");
         dashpanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 28));
 
-        navbar.add(dashpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 170, 50));
+        navbar.add(dashpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 170, 50));
 
         account.setBackground(new java.awt.Color(41, 50, 57));
         account.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -153,7 +161,16 @@ public class dashBoard extends javax.swing.JFrame {
         });
         account.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 80, 20));
 
-        navbar.add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 160, 50));
+        navbar.add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 160, 50));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_Folder/admin-logo.png"))); // NOI18N
+        navbar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 120, 110));
+
+        acc_name.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        acc_name.setForeground(new java.awt.Color(255, 255, 255));
+        acc_name.setText("ADMIN");
+        navbar.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
 
         jPanel2.add(navbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 420));
 
@@ -297,6 +314,11 @@ public class dashBoard extends javax.swing.JFrame {
         up.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Session sess = Session.getInstance();
+        acc_name.setText(""+sess.getFname());
+    }//GEN-LAST:event_formWindowActivated
      
     /**
      * @param args the command line arguments
@@ -315,29 +337,32 @@ public class dashBoard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminDashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminDashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminDashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(adminDashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new dashBoard().setVisible(true);
+                new adminDashBoard().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel acc_name;
     private javax.swing.JPanel account;
     private javax.swing.JLabel close;
     private javax.swing.JPanel dashpanel;
     private javax.swing.JPanel header;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
