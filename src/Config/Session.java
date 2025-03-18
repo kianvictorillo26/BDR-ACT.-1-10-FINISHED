@@ -4,11 +4,11 @@ package Config;
 public class Session {
     
     private static Session instance;
-    private String uid;
+    private int uid;
     private String fname;
     private String lname;
     private String address;
-    private String acount_type;
+    private String account_type;
     private String email;
     private String contact;
     private String uname;
@@ -19,11 +19,11 @@ public class Session {
     
     }
 
-    public String getUid() {
+    public int getUid() {
         return uid;
     }
 
-    public void setUid(String uid) {
+    public void setUid(int uid) {
         this.uid = uid;
     }
     
@@ -62,12 +62,12 @@ public class Session {
         this.address = address;
     }
 
-    public String getAcount_type() {
-        return acount_type;
+    public String getAccount_type() {
+        return account_type;
     }
 
-    public void setAcount_type(String acount_type) {
-        this.acount_type = acount_type;
+    public void setAccount_type(String account_type) {
+        this.account_type = account_type;
     }
 
     public String getEmail() {
@@ -100,10 +100,6 @@ public class Session {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public void setAccountType(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
