@@ -216,6 +216,11 @@ public class createUserForm extends javax.swing.JFrame {
 
         ADD.setBackground(new java.awt.Color(110, 177, 214));
         ADD.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ADD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ADDMouseClicked(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(110, 177, 214));
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -516,7 +521,6 @@ public class createUserForm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Registered Successfully!");
                 userPage up = new userPage();
                 up.setVisible(true);
-                this.dispose();
             }else{
                 JOptionPane.showMessageDialog(null,"Connection Error!!");
             
@@ -565,6 +569,10 @@ public class createUserForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel18MouseClicked
 
+    private void ADDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ADDMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ADDMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -602,7 +610,6 @@ public class createUserForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ADD;
-    private javax.swing.JPanel ADD1;
     private javax.swing.JPanel CANCEL;
     private javax.swing.JPanel CLEAR;
     private javax.swing.JPanel DELETE;
@@ -620,7 +627,6 @@ public class createUserForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

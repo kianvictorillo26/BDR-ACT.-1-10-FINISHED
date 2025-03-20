@@ -8,6 +8,7 @@ import java.awt.Color;
 import BDR.*;
 import BDR.dashBoardPage;
 import BDR.settingsPage;
+import CITIZEN.citizenDashBoard;
 import javax.swing.JOptionPane;
 
 public class adminDashBoard extends javax.swing.JFrame {

@@ -34,7 +34,7 @@ public class userPage extends javax.swing.JInternalFrame {
         try{
             config conf = new config();
             ResultSet rs = conf.getData("SELECT * FROM users");
-            table_users.setModel(DbUtils.resultSetToTableModel(rs));
+            usersTable.setModel(DbUtils.resultSetToTableModel(rs));
              rs.close();
         }catch(SQLException ex){
             System.out.println("Errors: "+ex.getMessage());
@@ -83,7 +83,7 @@ Color navcolor = new Color(41,50,57);
         signinButton5 = new javax.swing.JLabel();
         search = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table_users = new javax.swing.JTable();
+        usersTable = new javax.swing.JTable();
         Search = new javax.swing.JPanel();
         signinButton3 = new javax.swing.JLabel();
         cancel3 = new javax.swing.JPanel();
@@ -282,7 +282,7 @@ Color navcolor = new Color(41,50,57);
         });
         jPanel1.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 180, 30));
 
-        table_users.setModel(new javax.swing.table.DefaultTableModel(
+        usersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -290,7 +290,7 @@ Color navcolor = new Color(41,50,57);
 
             }
         ));
-        jScrollPane2.setViewportView(table_users);
+        jScrollPane2.setViewportView(usersTable);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 680, 270));
 
@@ -577,6 +577,6 @@ Color navcolor = new Color(41,50,57);
     private javax.swing.JLabel signinButton4;
     private javax.swing.JLabel signinButton5;
     private javax.swing.JLabel signinButton6;
-    private javax.swing.JTable table_users;
+    private javax.swing.JTable usersTable;
     // End of variables declaration//GEN-END:variables
 }
