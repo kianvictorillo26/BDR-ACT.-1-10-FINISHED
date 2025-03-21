@@ -6,8 +6,10 @@
 package BDR;
 
 import Config.config;
+import Config.passwordHasher;
 import java.awt.BasicStroke;  
 import java.awt.Color;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.BorderFactory;
@@ -96,11 +98,11 @@ Color navcolor = new Color(41,50,57);
         jLabel12 = new javax.swing.JLabel();
         uname = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        pname = new javax.swing.JTextField();
         utype = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        pname = new javax.swing.JPasswordField();
         maximize = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
 
@@ -225,17 +227,6 @@ Color navcolor = new Color(41,50,57);
         jLabel13.setText("Password:");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, 30));
 
-        pname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        pname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        pname.setOpaque(false);
-        pname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pnameActionPerformed(evt);
-            }
-        });
-        jPanel2.add(pname, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 180, 30));
-
         utype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CITIZEN", "ADMIN" }));
         jPanel2.add(utype, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 180, 30));
 
@@ -269,6 +260,13 @@ Color navcolor = new Color(41,50,57);
         );
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 160, 60));
+
+        pname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pnameActionPerformed(evt);
+            }
+        });
+        jPanel2.add(pname, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 180, 30));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(50, 130, 680, 280);
@@ -323,10 +321,6 @@ Color navcolor = new Color(41,50,57);
       
     }//GEN-LAST:event_closeMouseClicked
 
-    private void pnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnameActionPerformed
-
     private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_unameActionPerformed
@@ -366,17 +360,29 @@ Color navcolor = new Color(41,50,57);
             System.out.println("Duplicate Exist!");
         }else{
             config conf = new config();
+            
+            try{
+            String pass = passwordHasher.hashPassword(pname.getText());
+            
             if(conf.insertData("INSERT INTO users (fname, lname, address, account_type, email, uname, pname, contact, status) "
                 + "VALUES ('"+fname.getText()+"', '"+lname.getText()+"', '"+address.getText()+"'"
                 + ", '"+utype.getSelectedItem()+"', '"+email.getText()+"', '"+uname.getText()+"'"
-                + ", '"+pname.getText()+"', '"+contact.getText()+"', 'Pending')")==1){
-            JOptionPane.showMessageDialog(null, "Registered Successfully!");
-            loginForm login = new loginForm();
-            login.setVisible(true);
-            this.dispose();
+                + ", '"+pass+"', '"+contact.getText()+"', 'Pending')")==1){
+                JOptionPane.showMessageDialog(null, "Registered Successfully!");
+                loginForm login = new loginForm();
+                login.setVisible(true);
+                this.dispose();
+            }else{JOptionPane.showMessageDialog(null,"Connection Error!");
+            }
+            }catch(NoSuchAlgorithmException ex){
+            System.out.println(""+ex);
             }
         }
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void pnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -439,7 +445,7 @@ Color navcolor = new Color(41,50,57);
     private javax.swing.JPanel jPanel9;
     private javax.swing.JTextField lname;
     private javax.swing.JLabel maximize;
-    private javax.swing.JTextField pname;
+    private javax.swing.JPasswordField pname;
     private javax.swing.JTextField uname;
     private javax.swing.JComboBox<String> utype;
     // End of variables declaration//GEN-END:variables

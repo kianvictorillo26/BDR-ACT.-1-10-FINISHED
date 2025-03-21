@@ -3,11 +3,14 @@ package BDR;
 
 import ADMIN.adminDashBoard;
 import BDR.registrationForm;
+import ADMIN.citizenForm;
 import CITIZEN.citizenDashBoard;
 import Config.Session;
 import Config.config;
+import Config.passwordHasher;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.BorderFactory;
@@ -33,26 +36,37 @@ public class loginForm extends javax.swing.JFrame {
     public static boolean loging_in(String username, String password){
         config conf = new config();
         try{
-            String query = "SELECT * FROM users WHERE uname = '"+username+"' AND pname = '"+password+"'";
+            String query = "SELECT * FROM users WHERE uname = '"+username+"'";
             ResultSet resultSet = conf.getData(query);
             if(resultSet.next()){
-                status = resultSet.getString("status");
-                type = resultSet.getString("account_type");
-                Session sess = Session.getInstance();
-                    sess.setUid(resultSet.getInt("U_Id"));
-                    sess.setFname(resultSet.getString("fname"));
-                    sess.setLname(resultSet.getString("lname"));
-                    sess.setAddress(resultSet.getString("address"));
-                    sess.setAccount_type(resultSet.getString("account_type"));
-                    sess.setEmail(resultSet.getString("email"));
-                    sess.setContact(resultSet.getString("contact"));
-                    sess.setUname(resultSet.getString("uname"));
-                    sess.setStatus(resultSet.getString("status"));
-                return true;
+  
+                    String hashedPass = resultSet.getString("pname");
+                    String rehashed = passwordHasher.hashPassword((password));
+                    
+                    if(hashedPass.equals(rehashed)){
+                    
+                    status = resultSet.getString("status");
+                    type = resultSet.getString("account_type");
+                    Session sess = Session.getInstance();
+                        sess.setUid(resultSet.getInt("U_Id"));
+                        sess.setFname(resultSet.getString("fname"));
+                        sess.setLname(resultSet.getString("lname"));
+                        sess.setAddress(resultSet.getString("address"));
+                        sess.setAccount_type(resultSet.getString("account_type"));
+                        sess.setEmail(resultSet.getString("email"));
+                        sess.setContact(resultSet.getString("contact"));
+                        sess.setUname(resultSet.getString("uname"));
+                        sess.setStatus(resultSet.getString("status"));
+                    return true;
+                    
+                    }else{
+                        System.out.println("Password don't Match!");
+                        return false;
+                    }
             }else{
                 return false;
             }
-        }catch(SQLException ex){
+        }catch(SQLException | NoSuchAlgorithmException ex){
             return false;
         }
     }
@@ -279,11 +293,11 @@ Color navcolor = new Color(41,50,57);
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 763, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
         );
 
         pack();
@@ -349,8 +363,8 @@ Color navcolor = new Color(41,50,57);
                     admin.setVisible(true);
                     this.dispose();
                 }else{
-                    citizenDashBoard user = new citizenDashBoard();
-                    user.setVisible(true);
+                    citizenDashBoard cdr = new citizenDashBoard();
+                    cdr.setVisible(true);
                     this.dispose();
                 }
             }

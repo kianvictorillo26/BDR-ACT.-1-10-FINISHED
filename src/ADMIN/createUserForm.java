@@ -26,7 +26,7 @@ public class createUserForm extends javax.swing.JFrame {
         initComponents();
         
         
-    } public boolean duplicateChecker(){
+    } public boolean duplicateCheck(){
         config conf = new config();
         try{
             String query = "SELECT * FROM users WHERE uname = '"+uname.getText()+"' OR email = '"+email.getText()+"'";
@@ -50,8 +50,34 @@ public class createUserForm extends javax.swing.JFrame {
         }catch(SQLException ex){
             System.out.println(""+ex);
             return false;
-        }
+        } 
+    } public boolean updateCheck(){
+        config conf = new config();
+        try{
+            String query = "SELECT * FROM users WHERE (uname = '"+uname.getText()+"' OR email = '"+email.getText()+"')AND U_Id != '"+uid.getText()+"'";
+            ResultSet resultSet = conf.getData(query);
+            
+            if(resultSet.next()){
+                emails = resultSet.getString("email");
+                if(emails.equals(email.getText())){
+                    JOptionPane.showMessageDialog(null, "Email is Already Used!");
+                    email.setText(null);
+                }
+                usernames = resultSet.getString("uname");
+                if(usernames.equals(uname.getText())){
+                    JOptionPane.showMessageDialog(null, "Username is Already Used!");
+                    uname.setText(null);
+                }
+                return true;
+            }else{
+                return false;
+            }
+        }catch(SQLException ex){
+            System.out.println(""+ex);
+            return false;
+        } 
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -59,7 +85,7 @@ public class createUserForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        fname = new javax.swing.JTextField();
+        fn = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         lname = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -74,21 +100,21 @@ public class createUserForm extends javax.swing.JFrame {
         pname = new javax.swing.JTextField();
         us = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
-        ADD = new javax.swing.JPanel();
+        add = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         ut = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        ui = new javax.swing.JTextField();
-        UPDATE = new javax.swing.JPanel();
+        uid = new javax.swing.JTextField();
+        update = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        DELETE = new javax.swing.JPanel();
+        delete = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        CLEAR = new javax.swing.JPanel();
+        clear = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        CANCEL = new javax.swing.JPanel();
+        cancel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        REFRESH = new javax.swing.JPanel();
+        refresh = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         maximize = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
@@ -106,16 +132,16 @@ public class createUserForm extends javax.swing.JFrame {
         jLabel6.setText("First Name:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, 30));
 
-        fname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        fname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        fname.setOpaque(false);
-        fname.addActionListener(new java.awt.event.ActionListener() {
+        fn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        fn.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        fn.setOpaque(false);
+        fn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnameActionPerformed(evt);
+                fnActionPerformed(evt);
             }
         });
-        jPanel2.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 180, 30));
+        jPanel2.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 180, 30));
 
         jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel11.setText("Last Name:");
@@ -214,11 +240,11 @@ public class createUserForm extends javax.swing.JFrame {
         jLabel14.setText("User Type:");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, 30));
 
-        ADD.setBackground(new java.awt.Color(110, 177, 214));
-        ADD.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ADD.addMouseListener(new java.awt.event.MouseAdapter() {
+        add.setBackground(new java.awt.Color(110, 177, 214));
+        add.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ADDMouseClicked(evt);
+                addMouseClicked(evt);
             }
         });
 
@@ -232,20 +258,20 @@ public class createUserForm extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout ADDLayout = new javax.swing.GroupLayout(ADD);
-        ADD.setLayout(ADDLayout);
-        ADDLayout.setHorizontalGroup(
-            ADDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout addLayout = new javax.swing.GroupLayout(add);
+        add.setLayout(addLayout);
+        addLayout.setHorizontalGroup(
+            addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-        ADDLayout.setVerticalGroup(
-            ADDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ADDLayout.createSequentialGroup()
+        addLayout.setVerticalGroup(
+            addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addLayout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addComponent(jLabel2))
         );
 
-        jPanel2.add(ADD, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 160, 60));
+        jPanel2.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 160, 60));
 
         ut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CITIZEN", "ADMIN" }));
         ut.addActionListener(new java.awt.event.ActionListener() {
@@ -263,20 +289,26 @@ public class createUserForm extends javax.swing.JFrame {
         jLabel7.setText("User ID:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, 30));
 
-        ui.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        ui.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        ui.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        ui.setOpaque(false);
-        ui.addActionListener(new java.awt.event.ActionListener() {
+        uid.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        uid.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        uid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        uid.setEnabled(false);
+        uid.setOpaque(false);
+        uid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                uiActionPerformed(evt);
+                uidActionPerformed(evt);
             }
         });
-        jPanel2.add(ui, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 180, 30));
+        jPanel2.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 180, 30));
 
-        UPDATE.setBackground(new java.awt.Color(110, 177, 214));
-        UPDATE.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        UPDATE.setEnabled(false);
+        update.setBackground(new java.awt.Color(110, 177, 214));
+        update.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        update.setEnabled(false);
+        update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateMouseClicked(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(110, 177, 214));
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -288,26 +320,26 @@ public class createUserForm extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout UPDATELayout = new javax.swing.GroupLayout(UPDATE);
-        UPDATE.setLayout(UPDATELayout);
-        UPDATELayout.setHorizontalGroup(
-            UPDATELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UPDATELayout.createSequentialGroup()
+        javax.swing.GroupLayout updateLayout = new javax.swing.GroupLayout(update);
+        update.setLayout(updateLayout);
+        updateLayout.setHorizontalGroup(
+            updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateLayout.createSequentialGroup()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        UPDATELayout.setVerticalGroup(
-            UPDATELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(UPDATELayout.createSequentialGroup()
+        updateLayout.setVerticalGroup(
+            updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(updateLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel3)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jPanel2.add(UPDATE, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 160, 60));
+        jPanel2.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 160, 60));
 
-        DELETE.setBackground(new java.awt.Color(110, 177, 214));
-        DELETE.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        delete.setBackground(new java.awt.Color(110, 177, 214));
+        delete.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel4.setBackground(new java.awt.Color(110, 177, 214));
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -319,25 +351,24 @@ public class createUserForm extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout DELETELayout = new javax.swing.GroupLayout(DELETE);
-        DELETE.setLayout(DELETELayout);
-        DELETELayout.setHorizontalGroup(
-            DELETELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DELETELayout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+        javax.swing.GroupLayout deleteLayout = new javax.swing.GroupLayout(delete);
+        delete.setLayout(deleteLayout);
+        deleteLayout.setHorizontalGroup(
+            deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
         );
-        DELETELayout.setVerticalGroup(
-            DELETELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DELETELayout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+        deleteLayout.setVerticalGroup(
+            deleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(deleteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jPanel2.add(DELETE, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 160, 60));
+        jPanel2.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 160, 60));
 
-        CLEAR.setBackground(new java.awt.Color(110, 177, 214));
-        CLEAR.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        clear.setBackground(new java.awt.Color(110, 177, 214));
+        clear.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel5.setBackground(new java.awt.Color(110, 177, 214));
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -349,25 +380,31 @@ public class createUserForm extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout CLEARLayout = new javax.swing.GroupLayout(CLEAR);
-        CLEAR.setLayout(CLEARLayout);
-        CLEARLayout.setHorizontalGroup(
-            CLEARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CLEARLayout.createSequentialGroup()
+        javax.swing.GroupLayout clearLayout = new javax.swing.GroupLayout(clear);
+        clear.setLayout(clearLayout);
+        clearLayout.setHorizontalGroup(
+            clearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, clearLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        CLEARLayout.setVerticalGroup(
-            CLEARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CLEARLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+        clearLayout.setVerticalGroup(
+            clearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, clearLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
 
-        jPanel2.add(CLEAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 160, 60));
+        jPanel2.add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 160, 60));
 
-        CANCEL.setBackground(new java.awt.Color(110, 177, 214));
-        CANCEL.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cancel.setBackground(new java.awt.Color(110, 177, 214));
+        cancel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+        });
 
         jLabel16.setBackground(new java.awt.Color(110, 177, 214));
         jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -379,25 +416,26 @@ public class createUserForm extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout CANCELLayout = new javax.swing.GroupLayout(CANCEL);
-        CANCEL.setLayout(CANCELLayout);
-        CANCELLayout.setHorizontalGroup(
-            CANCELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CANCELLayout.createSequentialGroup()
+        javax.swing.GroupLayout cancelLayout = new javax.swing.GroupLayout(cancel);
+        cancel.setLayout(cancelLayout);
+        cancelLayout.setHorizontalGroup(
+            cancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cancelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        CANCELLayout.setVerticalGroup(
-            CANCELLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CANCELLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+        cancelLayout.setVerticalGroup(
+            cancelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cancelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jPanel2.add(CANCEL, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, -1, -1));
+        jPanel2.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, -1, 60));
 
-        REFRESH.setBackground(new java.awt.Color(110, 177, 214));
-        REFRESH.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        refresh.setBackground(new java.awt.Color(110, 177, 214));
+        refresh.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel18.setBackground(new java.awt.Color(110, 177, 214));
         jLabel18.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -409,22 +447,23 @@ public class createUserForm extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout REFRESHLayout = new javax.swing.GroupLayout(REFRESH);
-        REFRESH.setLayout(REFRESHLayout);
-        REFRESHLayout.setHorizontalGroup(
-            REFRESHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, REFRESHLayout.createSequentialGroup()
+        javax.swing.GroupLayout refreshLayout = new javax.swing.GroupLayout(refresh);
+        refresh.setLayout(refreshLayout);
+        refreshLayout.setHorizontalGroup(
+            refreshLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, refreshLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        REFRESHLayout.setVerticalGroup(
-            REFRESHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, REFRESHLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+        refreshLayout.setVerticalGroup(
+            refreshLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(refreshLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel18)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jPanel2.add(REFRESH, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, -1, -1));
+        jPanel2.add(refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, -1, 60));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(30, 30, 520, 480);
@@ -470,9 +509,9 @@ public class createUserForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameActionPerformed
+    private void fnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fnameActionPerformed
+    }//GEN-LAST:event_fnActionPerformed
 
     private void lnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnameActionPerformed
         // TODO add your handling code here:
@@ -500,7 +539,7 @@ public class createUserForm extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
-        if(fname.getText().isEmpty()
+        if(fn.getText().isEmpty()
             || lname.getText().isEmpty()
             || email.getText().isEmpty()
             || uname.getText().isEmpty()
@@ -509,18 +548,18 @@ public class createUserForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "All Fields are Required!");
         }else if(pname.getText().length()<8){
             JOptionPane.showMessageDialog(null, "Password Must be longer than 8!");
-        }else if(duplicateChecker()){
+        }else if(duplicateCheck()){
             System.out.println("Duplicate Exist!");
         }else{
             config conf = new config();
             if(conf.insertData("INSERT INTO users (fname, lname, address, account_type, email, uname, pname, contact, status) "
-                + "VALUES ('"+fname.getText()+"', '"+lname.getText()+"', '"+address.getText()+"'"
+                + "VALUES ('"+fn.getText()+"', '"+lname.getText()+"', '"+address.getText()+"'"
                 + ", '"+us.getSelectedItem()+"', '"+email.getText()+"', '"+uname.getText()+"'"
                 + ", '"+pname.getText()+"', '"+contact.getText()+"','"+us.getSelectedItem()+"')")==1)
             {
                 JOptionPane.showMessageDialog(null, "Registered Successfully!");
-                userPage up = new userPage();
-                up.setVisible(true);
+                citizenForm bdr = new citizenForm();
+                bdr.setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(null,"Connection Error!!");
             
@@ -535,15 +574,16 @@ public class createUserForm extends javax.swing.JFrame {
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         int a =JOptionPane.showConfirmDialog(null,"Confirm Exit?");
         if(a == JOptionPane.YES_OPTION){
-            loginForm lf = new loginForm();
-            lf.setVisible(true);
+            citizenForm cdr = new citizenForm();
+            cdr.setVisible(true);
+            this.dispose();
         }
 
     }//GEN-LAST:event_closeMouseClicked
 
-    private void uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiActionPerformed
+    private void uidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uidActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_uiActionPerformed
+    }//GEN-LAST:event_uidActionPerformed
 
     private void utActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utActionPerformed
         // TODO add your handling code here:
@@ -569,9 +609,41 @@ public class createUserForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel18MouseClicked
 
-    private void ADDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ADDMouseClicked
+    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_ADDMouseClicked
+    }//GEN-LAST:event_addMouseClicked
+
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
+        citizenForm cdr = new citizenForm();
+        cdr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cancelMouseClicked
+
+    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
+        
+        if(fn.getText().isEmpty()
+            || lname.getText().isEmpty()
+            || email.getText().isEmpty()
+            || uname.getText().isEmpty()
+            || pname.getText().isEmpty()
+            || contact.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "All Fields are Required!");
+        }else if(pname.getText().length()<8){
+            JOptionPane.showMessageDialog(null, "Password Must be longer than 8!");
+        }else if(updateCheck()){
+            System.out.println("Duplicate Exist!");
+        
+        config conf = new config();
+        conf.updateData("UPDATE users SET fname = '"+fn.getText()+"',lname = '"+lname.getText()+"',address = '"+address.getText()+
+                "',contact = '"+contact.getText()+"',email = '"+email.getText()
+                +"',uname = '"+uname.getText()+"',pname = '"+pname.getText()
+                +"',account_type = '"+ut.getSelectedItem()
+                +"',status = '"+us.getSelectedItem()+"' WHERE U_Id = '"+uid.getText()+"'");
+        
+                citizenForm bdr = new citizenForm();
+                bdr.setVisible(true);
+        }
+    }//GEN-LAST:event_updateMouseClicked
 
     /**
      * @param args the command line arguments
@@ -609,17 +681,15 @@ public class createUserForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel ADD;
-    private javax.swing.JPanel CANCEL;
-    private javax.swing.JPanel CLEAR;
-    private javax.swing.JPanel DELETE;
-    private javax.swing.JPanel REFRESH;
-    private javax.swing.JPanel UPDATE;
+    public javax.swing.JPanel add;
     public javax.swing.JTextField address;
+    private javax.swing.JPanel cancel;
+    private javax.swing.JPanel clear;
     private javax.swing.JLabel close;
     public javax.swing.JTextField contact;
+    private javax.swing.JPanel delete;
     public javax.swing.JTextField email;
-    public javax.swing.JTextField fname;
+    public javax.swing.JTextField fn;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -641,8 +711,10 @@ public class createUserForm extends javax.swing.JFrame {
     public javax.swing.JTextField lname;
     private javax.swing.JLabel maximize;
     public javax.swing.JTextField pname;
-    public javax.swing.JTextField ui;
+    private javax.swing.JPanel refresh;
+    public javax.swing.JTextField uid;
     public javax.swing.JTextField uname;
+    public javax.swing.JPanel update;
     public javax.swing.JComboBox<String> us;
     public javax.swing.JComboBox<String> ut;
     // End of variables declaration//GEN-END:variables

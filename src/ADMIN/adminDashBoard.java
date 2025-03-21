@@ -2,13 +2,11 @@
 package ADMIN;
 
 import BDR.loginForm;
-import CITIZEN.citizenDashBoard;
 import Config.Session;
 import java.awt.Color;
 import BDR.*;
 import BDR.dashBoardPage;
 import BDR.settingsPage;
-import CITIZEN.citizenDashBoard;
 import javax.swing.JOptionPane;
 
 public class adminDashBoard extends javax.swing.JFrame {
@@ -143,7 +141,7 @@ public class adminDashBoard extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("DASHBOARD");
-        dashpanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 28));
+        dashpanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 30));
 
         navbar.add(dashpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 170, 50));
 
@@ -286,7 +284,7 @@ public class adminDashBoard extends javax.swing.JFrame {
     }//GEN-LAST:event_dashpanelMouseExited
 
     private void userpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userpanelMouseClicked
-        citizenDashBoard user = new citizenDashBoard();
+        citizenForm user = new citizenForm();
         user.setVisible(true);
     }//GEN-LAST:event_userpanelMouseClicked
 
@@ -322,8 +320,9 @@ public class adminDashBoard extends javax.swing.JFrame {
     }//GEN-LAST:event_accountMouseClicked
 
     private void users_pageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users_pageMouseClicked
-        citizenDashBoard user = new citizenDashBoard();
+        citizenForm user = new citizenForm();
         user.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_users_pageMouseClicked
 
@@ -341,8 +340,7 @@ public class adminDashBoard extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void reportpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportpanelMouseClicked
-        userPage up = new userPage();
-        up.setVisible(true);
+        
     }//GEN-LAST:event_reportpanelMouseClicked
 
     private void users_page1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users_page1MouseClicked

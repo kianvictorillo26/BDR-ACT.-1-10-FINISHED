@@ -1,8 +1,7 @@
 
 package BDR;
 
-import ADMIN.userPage;
-import CITIZEN.citizenDashBoard;
+import ADMIN.citizenForm;
 import java.awt.Color;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -213,13 +212,11 @@ public class dashBoardPage extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_closeMouseClicked
 
     private void managerUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_managerUserMouseClicked
-        userPage up = new userPage();
-        up.setVisible(true);
+       
     }//GEN-LAST:event_managerUserMouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        userPage up = new userPage();
-        up.setVisible(true);
+        
     }//GEN-LAST:event_jLabel8MouseClicked
 
 

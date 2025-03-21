@@ -1,9 +1,9 @@
 
-package CITIZEN;
+package ADMIN;
 
 import ADMIN.*;
 import BDR.loginForm;
-import CITIZEN.citizenDashBoard;
+import ADMIN.citizenForm;
 import Config.Session;
 import java.awt.Color;
 import BDR.*;
@@ -19,14 +19,27 @@ import net.proteanit.sql.DbUtils;
 
 
 
-public class citizenDashBoard extends javax.swing.JFrame {
+public class citizenForm extends javax.swing.JFrame {
 
     /**
      * Creates new form dashBoard
      */
-    public citizenDashBoard() {
+    public citizenForm() {
         initComponents();
+        displayData();
     }
+    
+     public void displayData(){
+        try{
+            config conf = new config();
+            ResultSet rs = conf.getData("SELECT * FROM users");
+            usersTable.setModel(DbUtils.resultSetToTableModel(rs));
+             rs.close();
+        }catch(SQLException ex){
+            System.out.println("Errors: "+ex.getMessage());
+
+        }
+     }
     Color navcolor = new Color(41,50,57);  
     Color headcolor = new Color(137,207,24); 
     Color bodycolor = new Color(110,177,214);
@@ -50,14 +63,16 @@ public class citizenDashBoard extends javax.swing.JFrame {
         citizenName = new javax.swing.JLabel();
         user_name = new javax.swing.JLabel();
         acc_id = new javax.swing.JLabel();
+        p_add1 = new javax.swing.JPanel();
+        add = new javax.swing.JLabel();
+        p_edit = new javax.swing.JPanel();
+        edit = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         close = new javax.swing.JLabel();
         maximize = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         maindesktop = new javax.swing.JDesktopPane();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        usersTable = new javax.swing.JTable();
 
         p_add.setBackground(new java.awt.Color(41, 50, 57));
         p_add.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -126,7 +141,68 @@ public class citizenDashBoard extends javax.swing.JFrame {
         acc_id.setText("Account ID");
         navbar.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 160, 28));
 
-        jPanel2.add(navbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 430));
+        p_add1.setBackground(new java.awt.Color(41, 50, 57));
+        p_add1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                p_add1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                p_add1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                p_add1MouseExited(evt);
+            }
+        });
+        p_add1.setLayout(null);
+
+        add.setBackground(new java.awt.Color(44, 71, 35));
+        add.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        add.setForeground(new java.awt.Color(255, 255, 255));
+        add.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add.setText("ADD");
+        p_add1.add(add);
+        add.setBounds(0, 10, 160, 20);
+
+        navbar.add(p_add1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 160, 40));
+
+        p_edit.setBackground(new java.awt.Color(41, 50, 57));
+        p_edit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                p_editMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                p_editMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                p_editMouseExited(evt);
+            }
+        });
+
+        edit.setBackground(new java.awt.Color(44, 71, 35));
+        edit.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        edit.setForeground(new java.awt.Color(255, 255, 255));
+        edit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        edit.setText("EDIT");
+
+        javax.swing.GroupLayout p_editLayout = new javax.swing.GroupLayout(p_edit);
+        p_edit.setLayout(p_editLayout);
+        p_editLayout.setHorizontalGroup(
+            p_editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_editLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        p_editLayout.setVerticalGroup(
+            p_editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(p_editLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        navbar.add(p_edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 160, 40));
+
+        jPanel2.add(navbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 420));
 
         header.setBackground(new java.awt.Color(137, 207, 241));
 
@@ -148,19 +224,12 @@ public class citizenDashBoard extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("CITIZEN DASHBOARD");
-        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addContainerGap(145, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(106, 106, 106)
+                .addGap(0, 644, Short.MAX_VALUE)
                 .addComponent(maximize, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -171,54 +240,48 @@ public class citizenDashBoard extends javax.swing.JFrame {
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(close)
                     .addComponent(maximize))
-                .addGap(0, 28, Short.MAX_VALUE))
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 18, Short.MAX_VALUE))
         );
 
-        jPanel2.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 710, 50));
+        jPanel2.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 710, 40));
 
         maindesktop.setBackground(new java.awt.Color(110, 177, 214));
         maindesktop.setPreferredSize(new java.awt.Dimension(760, 420));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 50, 57)));
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel1MouseClicked(evt);
+        usersTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
             }
-        });
-        jPanel1.setLayout(null);
+        ));
+        jScrollPane2.setViewportView(usersTable);
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_Folder/user-account.png"))); // NOI18N
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(10, 0, 140, 120);
-
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("ACCOUNT");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(30, 100, 100, 23);
-
-        maindesktop.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        maindesktop.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout maindesktopLayout = new javax.swing.GroupLayout(maindesktop);
         maindesktop.setLayout(maindesktopLayout);
         maindesktopLayout.setHorizontalGroup(
             maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(maindesktopLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(533, Short.MAX_VALUE))
+            .addGap(0, 710, Short.MAX_VALUE)
+            .addGroup(maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, maindesktopLayout.createSequentialGroup()
+                    .addContainerGap(15, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(15, Short.MAX_VALUE)))
         );
         maindesktopLayout.setVerticalGroup(
             maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(maindesktopLayout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+            .addGap(0, 380, Short.MAX_VALUE)
+            .addGroup(maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(maindesktopLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
-        jPanel2.add(maindesktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 710, 380));
+        jPanel2.add(maindesktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 710, 380));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -273,11 +336,61 @@ public class citizenDashBoard extends javax.swing.JFrame {
         p_add.setBackground(navcolor);
     }//GEN-LAST:event_p_addMouseExited
 
-    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        accountDetails accd = new accountDetails();
-        accd.setVisible(true);
+    private void p_add1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add1MouseClicked
+        createUserForm cuf = new createUserForm();
+        cuf.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jPanel1MouseClicked
+    }//GEN-LAST:event_p_add1MouseClicked
+
+    private void p_add1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add1MouseEntered
+        p_add1.setBackground(bodycolor);
+    }//GEN-LAST:event_p_add1MouseEntered
+
+    private void p_add1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add1MouseExited
+        p_add1.setBackground(navcolor);
+    }//GEN-LAST:event_p_add1MouseExited
+
+    private void p_editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseClicked
+       int rowIndex = usersTable.getSelectedRow();
+       
+       if (rowIndex < 0){
+           JOptionPane.showMessageDialog(null,"Please select an Item!");
+       }else{
+           createUserForm crf = new createUserForm();
+           try{
+               config conf = new config();
+               TableModel tbl = usersTable.getModel();
+               ResultSet rs = conf.getData("SELECT * FROM users WHERE u_id = " + tbl.getValueAt(rowIndex, 0));
+               if (rs.next()) {
+                crf.uid.setText(rs.getString("u_id"));
+                crf.fn.setText(rs.getString("fname"));
+                crf.lname.setText(rs.getString("lname"));
+                crf.address.setText(rs.getString("address"));
+                crf.contact.setText(rs.getString("contact"));
+                crf.email.setText(rs.getString("email"));
+                crf.uname.setText(rs.getString("uname"));
+                crf.pname.setText(rs.getString("pname"));
+                crf.ut.setSelectedItem(rs.getString("account_type"));
+                crf.us.setSelectedItem(rs.getString("status"));
+                crf.add.setEnabled(false);
+                crf.update.setEnabled(true);
+                crf.setVisible(true);
+                this.dispose();
+               }
+           }catch(SQLException ex){
+               System.out.println(""+ex);
+           }
+          
+       }   
+    }//GEN-LAST:event_p_editMouseClicked
+
+    private void p_editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseEntered
+        p_edit.setBackground(bodycolor);
+    }//GEN-LAST:event_p_editMouseEntered
+
+    private void p_editMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_editMouseExited
+        p_edit.setBackground(navcolor);
+    }//GEN-LAST:event_p_editMouseExited
      
     /**
      * @param args the command line arguments
@@ -296,62 +409,14 @@ public class citizenDashBoard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(citizenDashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(citizenForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(citizenDashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(citizenForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(citizenDashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(citizenForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(citizenDashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(citizenForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -372,7 +437,7 @@ public class citizenDashBoard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new citizenDashBoard().setVisible(true);
+                new citizenForm().setVisible(true);
             }
         });
     }
@@ -381,20 +446,22 @@ public class citizenDashBoard extends javax.swing.JFrame {
     private javax.swing.JLabel ADD1;
     private javax.swing.JLabel acc_id;
     private javax.swing.JLabel acc_name;
+    private javax.swing.JLabel add;
     private javax.swing.JLabel citizenName;
     private javax.swing.JLabel close;
+    private javax.swing.JLabel edit;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JDesktopPane maindesktop;
     private javax.swing.JLabel maximize;
     private javax.swing.JPanel navbar;
     private javax.swing.JPanel p_add;
+    private javax.swing.JPanel p_add1;
+    private javax.swing.JPanel p_edit;
     private javax.swing.JLabel user_name;
+    private javax.swing.JTable usersTable;
     // End of variables declaration//GEN-END:variables
 }
