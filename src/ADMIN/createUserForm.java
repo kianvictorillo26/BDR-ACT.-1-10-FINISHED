@@ -68,9 +68,9 @@ public class createUserForm extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Username is Already Used!");
                     uname.setText(null);
                 }
-                return true;
-            }else{
                 return false;
+            }else{
+                return true;
             }
         }catch(SQLException ex){
             System.out.println(""+ex);
@@ -247,6 +247,7 @@ public class createUserForm extends javax.swing.JFrame {
                 addMouseClicked(evt);
             }
         });
+        add.setLayout(null);
 
         jLabel2.setBackground(new java.awt.Color(110, 177, 214));
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -257,19 +258,8 @@ public class createUserForm extends javax.swing.JFrame {
                 jLabel2MouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout addLayout = new javax.swing.GroupLayout(add);
-        add.setLayout(addLayout);
-        addLayout.setHorizontalGroup(
-            addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        addLayout.setVerticalGroup(
-            addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jLabel2))
-        );
+        add.add(jLabel2);
+        jLabel2.setBounds(3, 14, 154, 31);
 
         jPanel2.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 160, 60));
 
@@ -309,6 +299,7 @@ public class createUserForm extends javax.swing.JFrame {
                 updateMouseClicked(evt);
             }
         });
+        update.setLayout(null);
 
         jLabel3.setBackground(new java.awt.Color(110, 177, 214));
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -319,22 +310,8 @@ public class createUserForm extends javax.swing.JFrame {
                 jLabel3MouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout updateLayout = new javax.swing.GroupLayout(update);
-        update.setLayout(updateLayout);
-        updateLayout.setHorizontalGroup(
-            updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updateLayout.createSequentialGroup()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        updateLayout.setVerticalGroup(
-            updateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(updateLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
+        update.add(jLabel3);
+        jLabel3.setBounds(3, 14, 154, 31);
 
         jPanel2.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 160, 60));
 
@@ -539,32 +516,7 @@ public class createUserForm extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
-        if(fn.getText().isEmpty()
-            || lname.getText().isEmpty()
-            || email.getText().isEmpty()
-            || uname.getText().isEmpty()
-            || pname.getText().isEmpty()
-            || contact.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "All Fields are Required!");
-        }else if(pname.getText().length()<8){
-            JOptionPane.showMessageDialog(null, "Password Must be longer than 8!");
-        }else if(duplicateCheck()){
-            System.out.println("Duplicate Exist!");
-        }else{
-            config conf = new config();
-            if(conf.insertData("INSERT INTO users (fname, lname, address, account_type, email, uname, pname, contact, status) "
-                + "VALUES ('"+fn.getText()+"', '"+lname.getText()+"', '"+address.getText()+"'"
-                + ", '"+us.getSelectedItem()+"', '"+email.getText()+"', '"+uname.getText()+"'"
-                + ", '"+pname.getText()+"', '"+contact.getText()+"','"+us.getSelectedItem()+"')")==1)
-            {
-                JOptionPane.showMessageDialog(null, "Registered Successfully!");
-                citizenForm bdr = new citizenForm();
-                bdr.setVisible(true);
-            }else{
-                JOptionPane.showMessageDialog(null,"Connection Error!!");
-            
-        }
-        }
+        
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void maximizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maximizeMouseClicked
@@ -610,17 +562,6 @@ public class createUserForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addMouseClicked
-
-    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-        citizenForm cdr = new citizenForm();
-        cdr.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_cancelMouseClicked
-
-    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
-        
         if(fn.getText().isEmpty()
             || lname.getText().isEmpty()
             || email.getText().isEmpty()
@@ -630,19 +571,60 @@ public class createUserForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "All Fields are Required!");
         }else if(pname.getText().length()<8){
             JOptionPane.showMessageDialog(null, "Password Must be longer than 8!");
-        }else if(updateCheck()){
+        }else if(duplicateCheck()){
             System.out.println("Duplicate Exist!");
-        
-        config conf = new config();
-        conf.updateData("UPDATE users SET fname = '"+fn.getText()+"',lname = '"+lname.getText()+"',address = '"+address.getText()+
-                "',contact = '"+contact.getText()+"',email = '"+email.getText()
-                +"',uname = '"+uname.getText()+"',pname = '"+pname.getText()
-                +"',account_type = '"+ut.getSelectedItem()
-                +"',status = '"+us.getSelectedItem()+"' WHERE U_Id = '"+uid.getText()+"'");
-        
+        }else{
+            config conf = new config();
+            if(conf.insertData("INSERT INTO users (fname, lname, address, account_type, email, uname, pname, contact, status) "
+                + "VALUES ('"+fn.getText()+"', '"+lname.getText()+"', '"+address.getText()+"'"
+                + ", '"+us.getSelectedItem()+"', '"+email.getText()+"', '"+uname.getText()+"'"
+                + ", '"+pname.getText()+"', '"+contact.getText()+"','"+us.getSelectedItem()+"')")==1)
+            {
+                JOptionPane.showMessageDialog(null, "Registered Successfully!");
                 citizenForm bdr = new citizenForm();
                 bdr.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null,"Connection Error!!");
+            
         }
+        }
+    }//GEN-LAST:event_addMouseClicked
+
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
+        citizenForm cdr = new citizenForm();
+        cdr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cancelMouseClicked
+
+    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
+       
+        
+            if(fn.getText().isEmpty()
+                || lname.getText().isEmpty()
+                || email.getText().isEmpty()
+                || uname.getText().isEmpty()
+                || pname.getText().isEmpty()
+                || contact.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "All Fields are Required!");
+            }else if(pname.getText().length()<8){
+                JOptionPane.showMessageDialog(null, "Password Must be longer than 8!");
+            }else if(updateCheck()){
+                System.out.println("Duplicate Exist!");
+
+            config conf = new config();
+            conf.updateData("UPDATE users SET fname = '"+fn.getText()+"',lname = '"+lname.getText()+"',address = '"+address.getText()+
+                    "',contact = '"+contact.getText()+"',email = '"+email.getText()
+                    +"',uname = '"+uname.getText()+"',pname = '"+pname.getText()
+                    +"',account_type = '"+ut.getSelectedItem()
+                    +"',status = '"+us.getSelectedItem()+"' WHERE U_Id = '"+uid.getText()+"'");
+
+                    citizenForm bdr = new citizenForm();
+                    bdr.setVisible(true);
+                       
+        }else{
+            System.out.println(""+"test");
+            }
+      
     }//GEN-LAST:event_updateMouseClicked
 
     /**

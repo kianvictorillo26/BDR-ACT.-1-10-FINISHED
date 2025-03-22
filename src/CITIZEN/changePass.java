@@ -60,12 +60,12 @@ public class changePass extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         maindesktop = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
-        oldpass = new javax.swing.JLabel();
-        newpass = new javax.swing.JLabel();
-        lname = new javax.swing.JTextField();
-        conpass = new javax.swing.JLabel();
-        address = new javax.swing.JTextField();
-        fname = new javax.swing.JTextField();
+        text1 = new javax.swing.JLabel();
+        text2 = new javax.swing.JLabel();
+        newpass = new javax.swing.JTextField();
+        text3 = new javax.swing.JLabel();
+        conpass = new javax.swing.JTextField();
+        oldpass = new javax.swing.JTextField();
         back = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         save = new javax.swing.JPanel();
@@ -195,42 +195,42 @@ public class changePass extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(110, 177, 214));
 
-        oldpass.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        oldpass.setText("Type Old Password:");
+        text1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        text1.setText("Type Old Password:");
+
+        text2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        text2.setText("Type New Password:");
 
         newpass.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        newpass.setText("Type New Password:");
-
-        lname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        lname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        lname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        lname.setOpaque(false);
-        lname.addActionListener(new java.awt.event.ActionListener() {
+        newpass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        newpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        newpass.setOpaque(false);
+        newpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lnameActionPerformed(evt);
+                newpassActionPerformed(evt);
             }
         });
+
+        text3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        text3.setText("Confirm Password:");
 
         conpass.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        conpass.setText("Confirm Password:");
-
-        address.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        address.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        address.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        address.setOpaque(false);
-        address.addActionListener(new java.awt.event.ActionListener() {
+        conpass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        conpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        conpass.setOpaque(false);
+        conpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addressActionPerformed(evt);
+                conpassActionPerformed(evt);
             }
         });
 
-        fname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        fname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        fname.setOpaque(false);
-        fname.addActionListener(new java.awt.event.ActionListener() {
+        oldpass.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        oldpass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        oldpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        oldpass.setOpaque(false);
+        oldpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnameActionPerformed(evt);
+                oldpassActionPerformed(evt);
             }
         });
 
@@ -272,14 +272,14 @@ public class changePass extends javax.swing.JFrame {
                         .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(oldpass)
-                            .addComponent(newpass)
-                            .addComponent(conpass))
+                            .addComponent(text1)
+                            .addComponent(text2)
+                            .addComponent(text3))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lname, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(conpass, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(newpass, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(oldpass, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(196, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -287,16 +287,16 @@ public class changePass extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(oldpass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(text1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(oldpass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newpass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newpass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(conpass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(conpass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(text3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
@@ -378,17 +378,17 @@ public class changePass extends javax.swing.JFrame {
         p_add.setBackground(navcolor);
     }//GEN-LAST:event_p_addMouseExited
 
-    private void fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameActionPerformed
+    private void oldpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldpassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fnameActionPerformed
+    }//GEN-LAST:event_oldpassActionPerformed
 
-    private void addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressActionPerformed
+    private void conpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conpassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addressActionPerformed
+    }//GEN-LAST:event_conpassActionPerformed
 
-    private void lnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnameActionPerformed
+    private void newpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newpassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lnameActionPerformed
+    }//GEN-LAST:event_newpassActionPerformed
 
     private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
        
@@ -404,7 +404,7 @@ public class changePass extends javax.swing.JFrame {
            
            if(olddbpass.equals(oldhash)){
            String npass = passwordHasher.hashPassword(newpass.getText());
-           conf.updateData("UPDATE users SET pname = '"+newpass+"'");
+           conf.updateData("UPDATE users SET pname = '"+npass+"'");
            JOptionPane.showMessageDialog(null,"Succesfully Updated!!");
            loginForm lg = new loginForm();
            lg.setVisible(true);
@@ -707,13 +707,11 @@ public class changePass extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ADD1;
     private javax.swing.JLabel acc_id;
-    private javax.swing.JTextField address;
     private javax.swing.JPanel back;
     private javax.swing.JLabel cfname;
     private javax.swing.JLabel clname;
     private javax.swing.JLabel close;
-    private javax.swing.JLabel conpass;
-    private javax.swing.JTextField fname;
+    private javax.swing.JTextField conpass;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -722,14 +720,16 @@ public class changePass extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField lname;
-    private javax.swing.JDesktopPane maindesktop;
+    public javax.swing.JDesktopPane maindesktop;
     private javax.swing.JLabel maximize;
     private javax.swing.JPanel navbar;
-    private javax.swing.JLabel newpass;
-    private javax.swing.JLabel oldpass;
+    private javax.swing.JTextField newpass;
+    private javax.swing.JTextField oldpass;
     private javax.swing.JPanel p_add;
     private javax.swing.JPanel save;
+    private javax.swing.JLabel text1;
+    private javax.swing.JLabel text2;
+    private javax.swing.JLabel text3;
     private javax.swing.JLabel user_name;
     // End of variables declaration//GEN-END:variables
 }

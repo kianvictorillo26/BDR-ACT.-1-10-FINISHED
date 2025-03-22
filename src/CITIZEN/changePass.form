@@ -342,15 +342,15 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="oldpass" min="-2" max="-2" attributes="0"/>
-                                      <Component id="newpass" min="-2" max="-2" attributes="0"/>
-                                      <Component id="conpass" min="-2" max="-2" attributes="0"/>
+                                      <Component id="text1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="text2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="text3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="address" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="lname" min="-2" pref="180" max="-2" attributes="0"/>
-                                      <Component id="fname" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="conpass" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="newpass" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="oldpass" min="-2" pref="180" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -363,18 +363,18 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="text1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="oldpass" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="fname" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lname" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="newpass" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="text2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="address" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="conpass" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="conpass" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="text3" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -387,7 +387,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="oldpass">
+                <Component class="javax.swing.JLabel" name="text1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Century Gothic" size="14" style="1"/>
@@ -395,7 +395,7 @@
                     <Property name="text" type="java.lang.String" value="Type Old Password:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="newpass">
+                <Component class="javax.swing.JLabel" name="text2">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Century Gothic" size="14" style="1"/>
@@ -403,7 +403,7 @@
                     <Property name="text" type="java.lang.String" value="Type New Password:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="lname">
+                <Component class="javax.swing.JTextField" name="newpass">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Century Gothic" size="14" style="1"/>
@@ -417,10 +417,10 @@
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lnameActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newpassActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="conpass">
+                <Component class="javax.swing.JLabel" name="text3">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Century Gothic" size="14" style="1"/>
@@ -428,7 +428,7 @@
                     <Property name="text" type="java.lang.String" value="Confirm Password:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="address">
+                <Component class="javax.swing.JTextField" name="conpass">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Century Gothic" size="14" style="1"/>
@@ -442,10 +442,10 @@
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addressActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="conpassActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="fname">
+                <Component class="javax.swing.JTextField" name="oldpass">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Century Gothic" size="14" style="1"/>
@@ -459,7 +459,7 @@
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fnameActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="oldpassActionPerformed"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JPanel" name="back">
