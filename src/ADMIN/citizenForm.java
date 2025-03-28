@@ -339,6 +339,8 @@ public class citizenForm extends javax.swing.JFrame {
     private void p_add1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add1MouseClicked
         createUserForm cuf = new createUserForm();
         cuf.setVisible(true);
+        cuf.remove.setEnabled(false);
+        cuf.select.setEnabled(true);       
         this.dispose();
     }//GEN-LAST:event_p_add1MouseClicked
 
@@ -372,9 +374,22 @@ public class citizenForm extends javax.swing.JFrame {
                 crf.pname.setText(rs.getString("pname"));
                 crf.ut.setSelectedItem(rs.getString("account_type"));
                 crf.us.setSelectedItem(rs.getString("status"));
+                crf.image.setIcon(crf.ResizeImage(rs.getString("uimage"), null, crf.image));
+                crf.oldpath = rs.getString("uimage");
+                crf.path = rs.getString("uimage");
+                crf.destination = rs.getString("uimage");
                 crf.add.setEnabled(false);
                 crf.update.setEnabled(true);
                 crf.setVisible(true);
+                
+                if(rs.getString("uimage").isEmpty()){
+                    crf.select.setEnabled(true);
+                    crf.remove.setEnabled(false);
+                }else{
+                    crf.select.setEnabled(false);
+                    crf.remove.setEnabled(true);
+                }
+                
                 this.dispose();
                }
            }catch(SQLException ex){

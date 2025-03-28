@@ -242,7 +242,7 @@ public class changePass extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Back");
         back.add(jLabel4);
-        jLabel4.setBounds(20, 10, 70, 20);
+        jLabel4.setBounds(0, 10, 90, 20);
 
         save.setBackground(new java.awt.Color(41, 50, 57));
         save.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -257,7 +257,7 @@ public class changePass extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Save");
         save.add(jLabel3);
-        jLabel3.setBounds(20, 10, 70, 20);
+        jLabel3.setBounds(0, 10, 90, 20);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

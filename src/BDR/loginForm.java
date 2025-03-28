@@ -337,7 +337,11 @@ Color navcolor = new Color(41,50,57);
     }//GEN-LAST:event_cancelMouseExited
 
     private void showpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpassActionPerformed
-
+        if(showpass.isSelected()){
+                userPass.setEchoChar((char)0);
+            }else{
+                userPass.setEchoChar('*');
+            }
     }//GEN-LAST:event_showpassActionPerformed
 
     private void signinButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signinButton1MouseClicked
