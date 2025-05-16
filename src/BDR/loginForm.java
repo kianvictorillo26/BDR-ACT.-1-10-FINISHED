@@ -4,15 +4,20 @@ package BDR;
 import ADMIN.adminDashBoard;
 import BDR.registrationForm;
 import ADMIN.citizenForm;
+import ADMIN.forgotpassword;
 import CITIZEN.citizenDashBoard;
 import Config.Session;
-import Config.config;
+import config.config;
 import Config.passwordHasher;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -33,43 +38,70 @@ public class loginForm extends javax.swing.JFrame {
     static String status;
     static String type;
     
-    public static boolean loging_in(String username, String password){
-        config conf = new config();
-        try{
-            String query = "SELECT * FROM users WHERE uname = '"+username+"'";
-            ResultSet resultSet = conf.getData(query);
-            if(resultSet.next()){
-  
-                    String hashedPass = resultSet.getString("pname");
-                    String rehashed = passwordHasher.hashPassword((password));
-                    
-                    if(hashedPass.equals(rehashed)){
-                    
-                    status = resultSet.getString("status");
-                    type = resultSet.getString("account_type");
-                    Session sess = Session.getInstance();
-                        sess.setUid(resultSet.getInt("U_Id"));
-                        sess.setFname(resultSet.getString("fname"));
-                        sess.setLname(resultSet.getString("lname"));
-                        sess.setAddress(resultSet.getString("address"));
-                        sess.setAccount_type(resultSet.getString("account_type"));
-                        sess.setEmail(resultSet.getString("email"));
-                        sess.setContact(resultSet.getString("contact"));
-                        sess.setUname(resultSet.getString("uname"));
-                        sess.setStatus(resultSet.getString("status"));
-                    return true;
-                    
-                    }else{
-                        System.out.println("Password don't Match!");
-                        return false;
-                    }
-            }else{
+public static boolean logAcc(String username, String password) {
+    config conf = new config();
+    Connection connection = null;
+    PreparedStatement pstmt = null;
+    ResultSet resultSet = null;
+    
+    try {
+        connection = conf.getConnection();
+        String query = "SELECT id, fname, lname, address, account_type, email, uname, pname, status, contact FROM users WHERE uname = ?";
+        pstmt = connection.prepareStatement(query);
+        pstmt.setString(1, username.trim());
+        
+        resultSet = pstmt.executeQuery();
+
+        if (resultSet.next()) {
+            String hashedPass = resultSet.getString("pname");
+            String rehashedPass = passwordHasher.hashPassword(password);
+
+            System.out.println("DEBUG - Stored hash: " + hashedPass);
+            System.out.println("DEBUG - Computed hash: " + rehashedPass);
+            
+            if (hashedPass != null && hashedPass.equals(rehashedPass)) {
+                // Set session data
+                Session sess = Session.getInstance();
+                sess.setUid(resultSet.getInt("id"));
+                sess.setFname(resultSet.getString("fname"));
+                sess.setLname(resultSet.getString("lname"));
+                sess.setAddress(resultSet.getString("address"));
+                sess.setAccount_type(resultSet.getString("account_type"));
+                sess.setEmail(resultSet.getString("email"));
+                sess.setContact(resultSet.getString("contact"));
+                sess.setUname(resultSet.getString("uname"));
+                sess.setStatus(resultSet.getString("status"));
+                sess.setUserType(resultSet.getString("account_type")); // Added this line
+                
+                return true;
+            } else {
+                System.out.println("DEBUG - Password mismatch");
+                JOptionPane.showMessageDialog(null, "Invalid credentials", "Login Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
-        }catch(SQLException | NoSuchAlgorithmException ex){
+        } else {
+            System.out.println("DEBUG - User not found");
+            JOptionPane.showMessageDialog(null, "User not found", "Login Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Database error: " + ex.getMessage(), "System Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(null, "System error: " + ex.getMessage(), "System Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    } finally {
+        try {
+            if (resultSet != null) resultSet.close();
+            if (pstmt != null) pstmt.close();
+            if (connection != null) conf.closeConnection();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
+}
 Color navcolor = new Color(41,50,57);  
     Color headcolor = new Color(137,207,24); 
     Color bodycolor = new Color(110,177,214);
@@ -106,6 +138,7 @@ Color navcolor = new Color(41,50,57);
         logIn = new javax.swing.JPanel();
         signinButton1 = new javax.swing.JLabel();
         creatAccount = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         maximize = new javax.swing.JLabel();
@@ -208,7 +241,7 @@ Color navcolor = new Color(41,50,57);
                 showpassActionPerformed(evt);
             }
         });
-        jPanel2.add(showpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        jPanel2.add(showpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 173, -1, 30));
 
         logIn.setBackground(new java.awt.Color(137, 207, 241));
         logIn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -253,6 +286,15 @@ Color navcolor = new Color(41,50,57);
             }
         });
         jPanel2.add(creatAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 220, 30));
+
+        jLabel6.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel6.setText("Fogot Password");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, -1, -1));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(40, 120, 310, 280);
@@ -357,24 +399,35 @@ Color navcolor = new Color(41,50,57);
     }//GEN-LAST:event_signinButton1MouseExited
 
     private void logInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInMouseClicked
-        if(loging_in(userName.getText(), userPass.getText())){
-            if(!status.equals("Active")){
-                JOptionPane.showMessageDialog(null, "In-Active Account, Contact the Admin!");
-            }else{
-                JOptionPane.showMessageDialog(null, "Login Successfully!");
-                if(type.equals("ADMIN")){
-                    adminDashBoard admin = new adminDashBoard();
-                    admin.setVisible(true);
-                    this.dispose();
-                }else{
-                    citizenDashBoard cdr = new citizenDashBoard();
-                    cdr.setVisible(true);
-                    this.dispose();
-                }
+String user = userName.getText();
+String pass = new String(userPass.getPassword());
+
+if (user.isEmpty() || pass.isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Please fill all fields");
+} else {
+    if (logAcc(user, pass)) {
+        Session sess = Session.getInstance();
+        String status = sess.getStatus();
+        String userType = sess.getAccount_type(); // Changed to getAccount_type()
+        
+        // Temporary: Allow both "Active" and "Pending" status
+        if (!"Active".equalsIgnoreCase(status) && !"Pending".equalsIgnoreCase(status)) {
+            JOptionPane.showMessageDialog(null, "Account not active. Contact admin.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Login successful");
+            
+            if ("admin".equalsIgnoreCase(userType)) {
+                new adminDashBoard().setVisible(true);
+            } else {
+                new citizenDashBoard().setVisible(true);
             }
-        }else{
-            JOptionPane.showMessageDialog(null, "Login Unsuccessfull!");
+            this.dispose();
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "Invalid credentials");
+    }
+}
+   
     }//GEN-LAST:event_logInMouseClicked
 
     private void logInMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInMouseEntered
@@ -401,6 +454,10 @@ Color navcolor = new Color(41,50,57);
             System.exit(0);
       }         
     }//GEN-LAST:event_closeMouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        new forgotpassword().setVisible(true);this.dispose();
+    }//GEN-LAST:event_jLabel6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -447,6 +504,7 @@ Color navcolor = new Color(41,50,57);
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -9,7 +9,7 @@ import java.awt.Color;
 import BDR.*;
 import BDR.dashBoardPage;
 import BDR.settingsPage;
-import Config.config;
+import config.config;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.naming.spi.DirStateFactory.Result;

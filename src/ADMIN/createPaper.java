@@ -32,12 +32,12 @@ import javax.swing.SwingUtilities;
  *
  * @author KIAN VICTORILLO
  */
-public class createUserForm extends javax.swing.JFrame {
+public class createPaper extends javax.swing.JFrame {
 
     /**
      * Creates new form createUserForm
      */
-    public createUserForm() {
+    public createPaper() {
         initComponents();    
     }
     public String destination = "";
@@ -125,7 +125,7 @@ public class createUserForm extends javax.swing.JFrame {
     public boolean duplicateCheck(){
         config conf = new config();
         try{
-            String query = "SELECT * FROM users WHERE uname = '"+uname.getText()+"' OR email = '"+email.getText()+"'";
+            String query = "SELECT * FROM papers WHERE pname = '"+pname.getText()+"';
             ResultSet resultSet = conf.getData(query);
             
             if(resultSet.next()){
@@ -181,25 +181,13 @@ public class createUserForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        fname = new javax.swing.JTextField();
+        pname = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         lname = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         address = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        contact = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        email = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        uname = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        pname = new javax.swing.JTextField();
-        us = new javax.swing.JComboBox<>();
-        jLabel14 = new javax.swing.JLabel();
         add = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        utype = new javax.swing.JComboBox<>();
-        jLabel15 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         uid = new javax.swing.JTextField();
         update = new javax.swing.JPanel();
@@ -212,10 +200,6 @@ public class createUserForm extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         refresh = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        sec = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        sac = new javax.swing.JTextField();
         maximize = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
 
@@ -229,23 +213,23 @@ public class createUserForm extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel6.setText("First Name:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, -1, 30));
+        jLabel6.setText("Paper Name:");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, 30));
 
-        fname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        fname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        fname.setOpaque(false);
-        fname.addActionListener(new java.awt.event.ActionListener() {
+        pname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        pname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        pname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        pname.setOpaque(false);
+        pname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnameActionPerformed(evt);
+                pnameActionPerformed(evt);
             }
         });
-        jPanel2.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 180, 30));
+        jPanel2.add(pname, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 180, 30));
 
         jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel11.setText("Last Name:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, 30));
+        jLabel11.setText("Paper Status:");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, -1, 30));
 
         lname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         lname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -256,11 +240,11 @@ public class createUserForm extends javax.swing.JFrame {
                 lnameActionPerformed(evt);
             }
         });
-        jPanel2.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 180, 30));
+        jPanel2.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 180, 30));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel8.setText("Address:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, 30));
+        jLabel8.setText("Paper Description:");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, 30));
 
         address.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         address.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -271,75 +255,7 @@ public class createUserForm extends javax.swing.JFrame {
                 addressActionPerformed(evt);
             }
         });
-        jPanel2.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 180, 30));
-
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel9.setText("Contact Number:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, 30));
-
-        contact.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        contact.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        contact.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        contact.setOpaque(false);
-        contact.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contactActionPerformed(evt);
-            }
-        });
-        jPanel2.add(contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 180, 30));
-
-        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel10.setText("Email:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, -1, 30));
-
-        email.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        email.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        email.setOpaque(false);
-        email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailActionPerformed(evt);
-            }
-        });
-        jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 180, 30));
-
-        jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel12.setText("User Name:");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, 30));
-
-        uname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        uname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        uname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        uname.setOpaque(false);
-        uname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                unameActionPerformed(evt);
-            }
-        });
-        jPanel2.add(uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 180, 30));
-
-        jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel13.setText("Password:");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, -1, 30));
-
-        pname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        pname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        pname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        pname.setEnabled(false);
-        pname.setOpaque(false);
-        pname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pnameActionPerformed(evt);
-            }
-        });
-        jPanel2.add(pname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 180, 30));
-
-        us.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Pending" }));
-        jPanel2.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 180, 30));
-
-        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel14.setText("User Type:");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, -1, 30));
+        jPanel2.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 180, 30));
 
         add.setBackground(new java.awt.Color(110, 177, 214));
         add.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -364,21 +280,9 @@ public class createUserForm extends javax.swing.JFrame {
 
         jPanel2.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 40));
 
-        utype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CITIZEN", "ADMIN" }));
-        utype.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                utypeActionPerformed(evt);
-            }
-        });
-        jPanel2.add(utype, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 180, 30));
-
-        jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel15.setText("Account Status:");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, -1, -1));
-
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel7.setText("User ID:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, 30));
+        jLabel7.setText("Paper ID:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, 30));
 
         uid.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         uid.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -390,7 +294,7 @@ public class createUserForm extends javax.swing.JFrame {
                 uidActionPerformed(evt);
             }
         });
-        jPanel2.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 180, 30));
+        jPanel2.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 180, 30));
 
         update.setBackground(new java.awt.Color(110, 177, 214));
         update.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -541,38 +445,6 @@ public class createUserForm extends javax.swing.JFrame {
 
         jPanel2.add(refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, 110, 40));
 
-        sec.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        sec.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        sec.setText("what is your favorite color?");
-        sec.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        sec.setEnabled(false);
-        sec.setOpaque(false);
-        sec.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                secActionPerformed(evt);
-            }
-        });
-        jPanel2.add(sec, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 180, 30));
-
-        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel17.setText("Security Question:");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, 30));
-
-        jLabel19.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel19.setText("Security Answer:");
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, -1, 30));
-
-        sac.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        sac.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        sac.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        sac.setOpaque(false);
-        sac.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sacActionPerformed(evt);
-            }
-        });
-        jPanel2.add(sac, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 180, 30));
-
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 760, 430));
 
         maximize.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -610,9 +482,9 @@ public class createUserForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameActionPerformed
+    private void pnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fnameActionPerformed
+    }//GEN-LAST:event_pnameActionPerformed
 
     private void lnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnameActionPerformed
         // TODO add your handling code here:
@@ -621,22 +493,6 @@ public class createUserForm extends javax.swing.JFrame {
     private void addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addressActionPerformed
-
-    private void contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_contactActionPerformed
-
-    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailActionPerformed
-
-    private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unameActionPerformed
-
-    private void pnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnameActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
@@ -661,10 +517,6 @@ public class createUserForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_uidActionPerformed
 
-    private void utypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_utypeActionPerformed
-
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3MouseClicked
@@ -686,7 +538,7 @@ public class createUserForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-  String First_name = fname.getText().trim();
+  String First_name = pname.getText().trim();
     String Last_name = lname.getText().trim();
     String Email = email.getText().trim().toLowerCase();
     String User_type = utype.getSelectedItem().toString().trim();
@@ -777,14 +629,6 @@ if (First_name.isEmpty()) {
   
     }//GEN-LAST:event_updateMouseClicked
 
-    private void secActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_secActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_secActionPerformed
-
-    private void sacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sacActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sacActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -802,20 +646,21 @@ if (First_name.isEmpty()) {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(createUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(createPaper.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(createUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(createPaper.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(createUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(createPaper.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(createUserForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(createPaper.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new createUserForm().setVisible(true);
+                new createPaper().setVisible(true);
             }
         });
     }
@@ -826,20 +671,10 @@ if (First_name.isEmpty()) {
     private javax.swing.JPanel cancel;
     private javax.swing.JPanel clear;
     private javax.swing.JLabel close;
-    public javax.swing.JTextField contact;
     private javax.swing.JPanel delete;
-    public javax.swing.JTextField email;
-    public javax.swing.JTextField fname;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -847,19 +682,13 @@ if (First_name.isEmpty()) {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JTextField lname;
     private javax.swing.JLabel maximize;
     public javax.swing.JTextField pname;
     private javax.swing.JPanel refresh;
-    private javax.swing.JTextField sac;
-    private javax.swing.JTextField sec;
     public javax.swing.JTextField uid;
-    public javax.swing.JTextField uname;
     public javax.swing.JPanel update;
-    public javax.swing.JComboBox<String> us;
-    public javax.swing.JComboBox<String> utype;
     // End of variables declaration//GEN-END:variables
 }

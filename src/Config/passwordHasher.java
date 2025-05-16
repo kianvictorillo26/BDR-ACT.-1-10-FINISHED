@@ -12,5 +12,8 @@ public class passwordHasher {
         String encoded = Base64.getEncoder().encodeToString(hashBytes);
         return encoded;
     }
-    
+      // Check if entered password matches stored hashed password
+    public static boolean checkPassword(String plainPassword, String storedHashedPassword) throws NoSuchAlgorithmException {
+        return hashPassword(plainPassword).equals(storedHashedPassword);
+    }
 }

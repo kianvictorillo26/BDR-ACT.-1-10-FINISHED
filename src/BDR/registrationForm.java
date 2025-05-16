@@ -5,7 +5,7 @@
  */
 package BDR;
 
-import Config.config;
+import config.config;
 import Config.passwordHasher;
 import java.awt.BasicStroke;  
 import java.awt.Color;
@@ -103,6 +103,10 @@ Color navcolor = new Color(41,50,57);
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         pname = new javax.swing.JPasswordField();
+        sec = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        sac = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
         maximize = new javax.swing.JLabel();
         close = new javax.swing.JLabel();
 
@@ -231,14 +235,15 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(utype, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 180, 30));
 
         jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel14.setText("User Type:");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, 30));
+        jLabel14.setText("Security Answer:");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, -1, 30));
 
         jPanel3.setBackground(new java.awt.Color(110, 177, 214));
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setBackground(new java.awt.Color(110, 177, 214));
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("REGISTER");
         jLabel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -247,19 +252,9 @@ Color navcolor = new Color(41,50,57);
                 jLabel2MouseClicked(evt);
             }
         });
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 30));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 160, 60));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 160, 50));
 
         pname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,8 +263,40 @@ Color navcolor = new Color(41,50,57);
         });
         jPanel2.add(pname, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 180, 30));
 
+        sec.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        sec.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sec.setText("what is your favorite color?");
+        sec.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        sec.setEnabled(false);
+        sec.setOpaque(false);
+        sec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                secActionPerformed(evt);
+            }
+        });
+        jPanel2.add(sec, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 180, 30));
+
+        jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel15.setText("User Type:");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, 30));
+
+        sac.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        sac.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sac.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        sac.setOpaque(false);
+        sac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sacActionPerformed(evt);
+            }
+        });
+        jPanel2.add(sac, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 180, 30));
+
+        jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel16.setText("Security Question:");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, 30));
+
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(50, 130, 680, 280);
+        jPanel2.setBounds(50, 120, 680, 300);
 
         maximize.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         maximize.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -321,6 +348,100 @@ Color navcolor = new Color(41,50,57);
       
     }//GEN-LAST:event_closeMouseClicked
 
+    private void sacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sacActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sacActionPerformed
+
+    private void secActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_secActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_secActionPerformed
+
+    private void pnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnameActionPerformed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+       String First_name = fname.getText().trim();
+String Last_name = lname.getText().trim();
+String Email = email.getText().trim().toLowerCase();
+String User_type = utype.getSelectedItem().toString().trim();
+String user_name = uname.getText().trim();
+String Password = pname.getText().trim();
+String Address = address.getText().trim();  // Added address field
+String Contact = contact.getText().trim();  // Added contact field
+String Sec = sec.getText().trim();
+String Sac = sac.getText().toLowerCase().trim();
+config connect = new config();
+
+if (First_name.isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Please enter your First Name!", "Error", JOptionPane.WARNING_MESSAGE);
+} else if (Last_name.isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Please enter your Last Name!", "Error", JOptionPane.WARNING_MESSAGE);
+} else if (Email.isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Please enter an Email!", "Error", JOptionPane.WARNING_MESSAGE);
+} else if (!Email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+    JOptionPane.showMessageDialog(null, "Please enter a valid Email Address!", "Error", JOptionPane.WARNING_MESSAGE);
+} else if (User_type.isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Please select a User Type!", "Error", JOptionPane.WARNING_MESSAGE);
+} else if (user_name.isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Please enter a Username!", "Error", JOptionPane.WARNING_MESSAGE);
+} else if (Password.isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Please enter a Password!", "Error", JOptionPane.WARNING_MESSAGE);
+} else if (Password.length() < 8) {
+    JOptionPane.showMessageDialog(null, "Password must be at least 8 characters long!", "Error", JOptionPane.WARNING_MESSAGE);
+} else if (Address.isEmpty()) {  // Added address validation
+    JOptionPane.showMessageDialog(null, "Please enter your Address!", "Error", JOptionPane.WARNING_MESSAGE);
+} else if (Contact.isEmpty()) {  // Added contact validation
+    JOptionPane.showMessageDialog(null, "Please enter your Contact Number!", "Error", JOptionPane.WARNING_MESSAGE);
+} else if (Sec.isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Please enter a Security Question!", "Error", JOptionPane.WARNING_MESSAGE);
+} else if (Sac.isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Please enter a Security Answer!", "Error", JOptionPane.WARNING_MESSAGE);
+} else {
+    try {
+        if (connect.fieldExists("users", "uname", user_name)) {
+            JOptionPane.showMessageDialog(null, "Username already taken!", "Error", JOptionPane.WARNING_MESSAGE);
+        } else if (connect.fieldExists("users", "email", Email)) {
+            JOptionPane.showMessageDialog(null, "Email already used!", "Error", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String hashedPassword = passwordHasher.hashPassword(Password);
+            
+            // Updated SQL with address and contact
+            String sql = "INSERT INTO users (fname, lname, address, account_type, email, uname, pname, contact, status, security_question, security_answer) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            
+            // Updated parameters with address and contact
+            int rowsInserted = connect.insertData(sql, 
+                First_name, 
+                Last_name, 
+                Address,  // Added address
+                User_type, 
+                Email, 
+                user_name, 
+                hashedPassword, 
+                Contact,  // Added contact
+                "Pending",
+                Sec,
+                Sac);
+
+            if (rowsInserted > 0) {
+                JOptionPane.showMessageDialog(null, "Registered Successfully!");
+                new loginForm().setVisible(true);
+                
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(uname);
+                if (frame != null) {
+                    frame.dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Registration failed!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Database Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+    }//GEN-LAST:event_jLabel2MouseClicked
+
     private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_unameActionPerformed
@@ -344,45 +465,6 @@ Color navcolor = new Color(41,50,57);
     private void fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fnameActionPerformed
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        // TODO add your handling code here:
-        if(fname.getText().isEmpty()
-            || lname.getText().isEmpty()
-            || email.getText().isEmpty()
-            || uname.getText().isEmpty()
-            || pname.getText().isEmpty()
-            || contact.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "All Fields are Required!");
-        }else if(pname.getText().length()<8){
-            JOptionPane.showMessageDialog(null, "Password Must be longer than 8!");
-        }else if(duplicateChecker()){
-            System.out.println("Duplicate Exist!");
-        }else{
-            config conf = new config();
-            
-            try{
-            String pass = passwordHasher.hashPassword(pname.getText());
-            
-            if(conf.insertData("INSERT INTO users (fname, lname, address, account_type, email, uname, pname, contact, status) "
-                + "VALUES ('"+fname.getText()+"', '"+lname.getText()+"', '"+address.getText()+"'"
-                + ", '"+utype.getSelectedItem()+"', '"+email.getText()+"', '"+uname.getText()+"'"
-                + ", '"+pass+"', '"+contact.getText()+"', 'Pending')")==1){
-                JOptionPane.showMessageDialog(null, "Registered Successfully!");
-                loginForm login = new loginForm();
-                login.setVisible(true);
-                this.dispose();
-            }else{JOptionPane.showMessageDialog(null,"Connection Error!");
-            }
-            }catch(NoSuchAlgorithmException ex){
-            System.out.println(""+ex);
-            }
-        }
-    }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void pnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -434,6 +516,8 @@ Color navcolor = new Color(41,50,57);
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
@@ -446,6 +530,8 @@ Color navcolor = new Color(41,50,57);
     private javax.swing.JTextField lname;
     private javax.swing.JLabel maximize;
     private javax.swing.JPasswordField pname;
+    private javax.swing.JTextField sac;
+    private javax.swing.JTextField sec;
     private javax.swing.JTextField uname;
     private javax.swing.JComboBox<String> utype;
     // End of variables declaration//GEN-END:variables

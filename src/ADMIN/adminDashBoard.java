@@ -141,6 +141,11 @@ public class adminDashBoard extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("DASHBOARD");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         dashpanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, 30));
 
         navbar.add(dashpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 170, 50));
@@ -289,7 +294,7 @@ public class adminDashBoard extends javax.swing.JFrame {
     }//GEN-LAST:event_userpanelMouseClicked
 
     private void dashpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpanelMouseClicked
-       dashBoardPage dbp = new dashBoardPage();
+       dashBoardPage1 dbp = new dashBoardPage1();
         maindesktop.add(dbp).setVisible(true);
     }//GEN-LAST:event_dashpanelMouseClicked
 
@@ -315,7 +320,7 @@ public class adminDashBoard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void accountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountMouseClicked
-        settingsPage set = new settingsPage();
+        settingsPage1 set = new settingsPage1();
         maindesktop.add(set).setVisible(true);
     }//GEN-LAST:event_accountMouseClicked
 
@@ -346,6 +351,11 @@ public class adminDashBoard extends javax.swing.JFrame {
     private void users_page1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users_page1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_users_page1MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        dashBoardPage1 dbp = new dashBoardPage1();
+        maindesktop.add(dbp).setVisible(true);
+    }//GEN-LAST:event_jLabel4MouseClicked
      
     /**
      * @param args the command line arguments

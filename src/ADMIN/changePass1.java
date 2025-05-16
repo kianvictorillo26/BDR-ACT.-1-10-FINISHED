@@ -1,9 +1,10 @@
 
-package CITIZEN;
+package ADMIN;
 
+import CITIZEN.*;
 import ADMIN.*;
 import BDR.loginForm;
-import CITIZEN.changePass;
+import ADMIN.changePass1;
 import Config.Session;
 import java.awt.Color;
 import BDR.*;
@@ -26,12 +27,12 @@ import net.proteanit.sql.DbUtils;
 
 
 
-public class changePass extends javax.swing.JFrame {
+public class changePass1 extends javax.swing.JFrame {
 
     /**
      * Creates new form dashBoard
      */
-    public changePass() {
+    public changePass1() {
         initComponents();
     }
     Color navcolor = new Color(41,50,57);  
@@ -136,6 +137,17 @@ public class changePass extends javax.swing.JFrame {
         navbar.add(clname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 160, 20));
 
         back.setBackground(new java.awt.Color(41, 50, 57));
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                backMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                backMouseExited(evt);
+            }
+        });
         back.setLayout(null);
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -143,7 +155,7 @@ public class changePass extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Back");
         back.add(jLabel4);
-        jLabel4.setBounds(30, 10, 90, 20);
+        jLabel4.setBounds(50, 10, 60, 20);
 
         navbar.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 160, 43));
 
@@ -369,6 +381,18 @@ try {
 }
 
     }//GEN-LAST:event_saveMouseClicked
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+      new accountDetails1().setVisible(true);this.dispose();
+    }//GEN-LAST:event_backMouseClicked
+
+    private void backMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseEntered
+        back.setBackground(Color.white);
+    }//GEN-LAST:event_backMouseEntered
+
+    private void backMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseExited
+        back.setBackground(new Color (41,50,57));
+    }//GEN-LAST:event_backMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

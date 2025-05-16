@@ -9,7 +9,7 @@ import java.awt.Color;
 import BDR.*;
 import BDR.dashBoardPage;
 import BDR.settingsPage;
-import Config.config;
+import config.config;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.naming.spi.DirStateFactory.Result;
@@ -338,9 +338,7 @@ public class citizenForm extends javax.swing.JFrame {
 
     private void p_add1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_add1MouseClicked
         createUserForm cuf = new createUserForm();
-        cuf.setVisible(true);
-        cuf.remove.setEnabled(false);
-        cuf.select.setEnabled(true);       
+        cuf.setVisible(true);       
         this.dispose();
     }//GEN-LAST:event_p_add1MouseClicked
 
@@ -365,16 +363,16 @@ public class citizenForm extends javax.swing.JFrame {
                ResultSet rs = conf.getData("SELECT * FROM users WHERE u_id = " + tbl.getValueAt(rowIndex, 0));
                if (rs.next()) {
                 crf.uid.setText(rs.getString("u_id"));
-                crf.fn.setText(rs.getString("fname"));
+                crf.fname.setText(rs.getString("fname"));
                 crf.lname.setText(rs.getString("lname"));
                 crf.address.setText(rs.getString("address"));
                 crf.contact.setText(rs.getString("contact"));
                 crf.email.setText(rs.getString("email"));
                 crf.uname.setText(rs.getString("uname"));
                 crf.pname.setText(rs.getString("pname"));
-                crf.ut.setSelectedItem(rs.getString("account_type"));
+                crf.utype.setSelectedItem(rs.getString("account_type"));
                 crf.us.setSelectedItem(rs.getString("status"));
-                crf.image.setIcon(crf.ResizeImage(rs.getString("uimage"), null, crf.image));
+              
                 crf.oldpath = rs.getString("uimage");
                 crf.path = rs.getString("uimage");
                 crf.destination = rs.getString("uimage");
@@ -383,11 +381,9 @@ public class citizenForm extends javax.swing.JFrame {
                 crf.setVisible(true);
                 
                 if(rs.getString("uimage").isEmpty()){
-                    crf.select.setEnabled(true);
-                    crf.remove.setEnabled(false);
+                    
                 }else{
-                    crf.select.setEnabled(false);
-                    crf.remove.setEnabled(true);
+                    
                 }
                 
                 this.dispose();

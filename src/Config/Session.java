@@ -13,6 +13,7 @@ public class Session {
     private String contact;
     private String uname;
     private String status;
+    private String utype;
     
     private Session(){
     
@@ -101,5 +102,14 @@ public class Session {
     public void setStatus(String status) {
         this.status = status;
     }
+
+     public String getUserType() {
+        return utype;
+    }
+
+    public void setUserType(String utype) {
+        this.utype = utype;
+    }
+
 
 }
