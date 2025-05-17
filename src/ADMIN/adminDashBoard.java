@@ -280,23 +280,10 @@ public class adminDashBoard extends javax.swing.JFrame {
         userpanel.setBackground(navcolor);
     }//GEN-LAST:event_userpanelMouseExited
 
-    private void dashpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpanelMouseEntered
-         dashpanel.setBackground(bodycolor);
-    }//GEN-LAST:event_dashpanelMouseEntered
-
-    private void dashpanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpanelMouseExited
-         dashpanel.setBackground(navcolor);
-    }//GEN-LAST:event_dashpanelMouseExited
-
     private void userpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userpanelMouseClicked
         citizenForm user = new citizenForm();
         user.setVisible(true);
     }//GEN-LAST:event_userpanelMouseClicked
-
-    private void dashpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpanelMouseClicked
-       dashBoardPage1 dbp = new dashBoardPage1();
-        maindesktop.add(dbp).setVisible(true);
-    }//GEN-LAST:event_dashpanelMouseClicked
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         System.exit(0);
@@ -351,6 +338,19 @@ public class adminDashBoard extends javax.swing.JFrame {
     private void users_page1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_users_page1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_users_page1MouseClicked
+
+    private void dashpanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpanelMouseExited
+        dashpanel.setBackground(navcolor);
+    }//GEN-LAST:event_dashpanelMouseExited
+
+    private void dashpanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpanelMouseEntered
+        dashpanel.setBackground(bodycolor);
+    }//GEN-LAST:event_dashpanelMouseEntered
+
+    private void dashpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashpanelMouseClicked
+        dashBoardPage1 dbp = new dashBoardPage1();
+        maindesktop.add(dbp).setVisible(true);
+    }//GEN-LAST:event_dashpanelMouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         dashBoardPage1 dbp = new dashBoardPage1();

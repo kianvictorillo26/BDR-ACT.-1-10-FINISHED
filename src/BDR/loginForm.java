@@ -46,7 +46,7 @@ public static boolean logAcc(String username, String password) {
     
     try {
         connection = conf.getConnection();
-        String query = "SELECT id, fname, lname, address, account_type, email, uname, pname, status, contact FROM users WHERE uname = ?";
+        String query = "SELECT U_Id, fname, lname, address, account_type, email, uname, pname, status, contact FROM users WHERE uname = ?";
         pstmt = connection.prepareStatement(query);
         pstmt.setString(1, username.trim());
         
@@ -62,7 +62,7 @@ public static boolean logAcc(String username, String password) {
             if (hashedPass != null && hashedPass.equals(rehashedPass)) {
                 // Set session data
                 Session sess = Session.getInstance();
-                sess.setUid(resultSet.getInt("id"));
+                sess.setUid(resultSet.getInt("U_Id"));
                 sess.setFname(resultSet.getString("fname"));
                 sess.setLname(resultSet.getString("lname"));
                 sess.setAddress(resultSet.getString("address"));
