@@ -1,14 +1,13 @@
 
 package CITIZEN;
 
+import ADMIN.user.createUser;
 import ADMIN.*;
 import BDR.loginForm;
 import CITIZEN.citizenDashBoard;
-import Config.Session;
+import config.Session;
 import java.awt.Color;
 import BDR.*;
-import BDR.dashBoardPage;
-import BDR.settingsPage;
 import config.config;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -55,9 +54,15 @@ public class citizenDashBoard extends javax.swing.JFrame {
         maximize = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         maindesktop = new javax.swing.JDesktopPane();
-        jPanel1 = new javax.swing.JPanel();
+        requestdocu = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        myrequests = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        myaccount = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         p_add.setBackground(new java.awt.Color(41, 50, 57));
         p_add.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -149,6 +154,7 @@ public class citizenDashBoard extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CITIZEN DASHBOARD");
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -179,44 +185,64 @@ public class citizenDashBoard extends javax.swing.JFrame {
 
         maindesktop.setBackground(new java.awt.Color(110, 177, 214));
         maindesktop.setPreferredSize(new java.awt.Dimension(760, 420));
+        maindesktop.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 50, 57)));
-        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        requestdocu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 50, 57)));
+        requestdocu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel1MouseClicked(evt);
+                requestdocuMouseClicked(evt);
             }
         });
-        jPanel1.setLayout(null);
+        requestdocu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_Folder/user-account.png"))); // NOI18N
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(10, 0, 140, 120);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_Folder/graph-report-96.png"))); // NOI18N
+        requestdocu.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 70, 90));
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("ACCOUNT");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(30, 100, 100, 23);
+        jLabel4.setText("REQUEST DOCUMENT");
+        requestdocu.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 160, -1));
 
-        maindesktop.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        maindesktop.add(requestdocu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 157, 148));
 
-        javax.swing.GroupLayout maindesktopLayout = new javax.swing.GroupLayout(maindesktop);
-        maindesktop.setLayout(maindesktopLayout);
-        maindesktopLayout.setHorizontalGroup(
-            maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(maindesktopLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(533, Short.MAX_VALUE))
-        );
-        maindesktopLayout.setVerticalGroup(
-            maindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(maindesktopLayout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
-        );
+        myrequests.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 50, 57)));
+        myrequests.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                myrequestsMouseClicked(evt);
+            }
+        });
+        myrequests.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_Folder/graph-report-96.png"))); // NOI18N
+        myrequests.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 70, 90));
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("MY REQUESTS");
+        myrequests.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 160, -1));
+
+        maindesktop.add(myrequests, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 157, 148));
+
+        myaccount.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 50, 57)));
+        myaccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                myaccountMouseClicked(evt);
+            }
+        });
+        myaccount.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_Folder/user-account.png"))); // NOI18N
+        myaccount.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 100));
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("MY ACCOUNT");
+        myaccount.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 160, -1));
+
+        maindesktop.add(myaccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 157, 148));
 
         jPanel2.add(maindesktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 710, 380));
 
@@ -260,7 +286,7 @@ public class citizenDashBoard extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void p_addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_p_addMouseClicked
-        createUserForm cuf = new createUserForm();
+        createUser cuf = new createUser();
         cuf.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_p_addMouseClicked
@@ -273,11 +299,20 @@ public class citizenDashBoard extends javax.swing.JFrame {
         p_add.setBackground(navcolor);
     }//GEN-LAST:event_p_addMouseExited
 
-    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
-        accountDetails accd = new accountDetails();
-        accd.setVisible(true);
+    private void requestdocuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_requestdocuMouseClicked
+        new requestDocument().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jPanel1MouseClicked
+    }//GEN-LAST:event_requestdocuMouseClicked
+
+    private void myrequestsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myrequestsMouseClicked
+     new citizenRequests().setVisible(true);
+     this.dispose();
+    }//GEN-LAST:event_myrequestsMouseClicked
+
+    private void myaccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myaccountMouseClicked
+      new accountDetails().setVisible(true);
+      this.dispose();
+    }//GEN-LAST:event_myaccountMouseClicked
      
     /**
      * @param args the command line arguments
@@ -388,13 +423,19 @@ public class citizenDashBoard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JDesktopPane maindesktop;
     private javax.swing.JLabel maximize;
+    private javax.swing.JPanel myaccount;
+    private javax.swing.JPanel myrequests;
     private javax.swing.JPanel navbar;
     private javax.swing.JPanel p_add;
+    private javax.swing.JPanel requestdocu;
     private javax.swing.JLabel user_name;
     // End of variables declaration//GEN-END:variables
 }

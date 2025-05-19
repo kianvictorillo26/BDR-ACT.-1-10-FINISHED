@@ -2,23 +2,28 @@
 package CITIZEN;
 
 import ADMIN.user.createUser;
+import CITIZEN.*;
 import ADMIN.*;
-import CITIZEN.accountDetails;
+import BDR.loginForm;
 import config.Session;
 import java.awt.Color;
 import BDR.*;
 import config.config;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.naming.spi.DirStateFactory.Result;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import net.proteanit.sql.DbUtils;
 
 
 
-
-public class accountDetails extends javax.swing.JFrame {
+public class citizenProfle extends javax.swing.JFrame {
 
     /**
      * Creates new form dashBoard
      */
-    public accountDetails() {
+    public citizenProfle() {
         initComponents();
     }
     Color navcolor = new Color(41,50,57);  
@@ -65,7 +70,8 @@ public class accountDetails extends javax.swing.JFrame {
         email = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         uname = new javax.swing.JTextField();
-        updateCitizen = new javax.swing.JButton();
+        image = new javax.swing.JLabel();
+        updateimage = new javax.swing.JButton();
 
         p_add.setBackground(new java.awt.Color(41, 50, 57));
         p_add.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -169,7 +175,7 @@ public class accountDetails extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("CURRENT USER ID:");
+        jLabel5.setText("CITIZEN ID");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -222,7 +228,7 @@ public class accountDetails extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("First Name:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, 30));
 
         fname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         fname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -233,12 +239,12 @@ public class accountDetails extends javax.swing.JFrame {
                 fnameActionPerformed(evt);
             }
         });
-        jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 180, 30));
+        jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 180, 30));
 
         jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Last Name:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, 30));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, 30));
 
         lname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         lname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -249,12 +255,12 @@ public class accountDetails extends javax.swing.JFrame {
                 lnameActionPerformed(evt);
             }
         });
-        jPanel1.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 180, 30));
+        jPanel1.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 180, 30));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Address:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, 30));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 80, 30));
 
         address.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         address.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -265,12 +271,12 @@ public class accountDetails extends javax.swing.JFrame {
                 addressActionPerformed(evt);
             }
         });
-        jPanel1.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 180, 30));
+        jPanel1.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 180, 30));
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Contact Number:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, 30));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, 30));
 
         contact.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         contact.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -281,12 +287,12 @@ public class accountDetails extends javax.swing.JFrame {
                 contactActionPerformed(evt);
             }
         });
-        jPanel1.add(contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 180, 30));
+        jPanel1.add(contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 180, 30));
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Email:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, 30));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, 30));
 
         email.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         email.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -297,36 +303,33 @@ public class accountDetails extends javax.swing.JFrame {
                 emailActionPerformed(evt);
             }
         });
-        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 180, 30));
+        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 180, 30));
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("User Name:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, 30));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, 30));
 
         uname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         uname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         uname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        uname.setEnabled(false);
         uname.setOpaque(false);
         uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 unameActionPerformed(evt);
             }
         });
-        jPanel1.add(uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 180, 30));
+        jPanel1.add(uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 180, 30));
 
-        updateCitizen.setBackground(new java.awt.Color(137, 207, 241));
-        updateCitizen.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        updateCitizen.setForeground(new java.awt.Color(0, 0, 0));
-        updateCitizen.setText("UPDATE");
-        updateCitizen.setBorder(null);
-        updateCitizen.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                updateCitizenMouseClicked(evt);
-            }
-        });
-        jPanel1.add(updateCitizen, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 250, 40));
+        image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 140, 130));
+
+        updateimage.setBackground(new java.awt.Color(137, 207, 241));
+        updateimage.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        updateimage.setForeground(new java.awt.Color(0, 0, 0));
+        updateimage.setText("UPDATE");
+        updateimage.setBorder(null);
+        jPanel1.add(updateimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 70, 40));
 
         maindesktop.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -378,7 +381,7 @@ public class accountDetails extends javax.swing.JFrame {
                contact.setText(""+sess.getContact());
                email.setText(""+sess.getEmail());
                uname.setText(""+sess.getUname());
-            
+             
               
     }//GEN-LAST:event_formWindowActivated
 
@@ -449,61 +452,6 @@ public class accountDetails extends javax.swing.JFrame {
     private void accMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accMouseExited
         changePass.setBackground(navcolor);
     }//GEN-LAST:event_accMouseExited
-
-    private void updateCitizenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateCitizenMouseClicked
-        // Update citizen details in the database
-        String firstName = fname.getText().trim();
-        String lastName = lname.getText().trim();
-        String addr = address.getText().trim();
-        String contactNum = contact.getText().trim();
-        String emailAddr = email.getText().trim();
-        String username = uname.getText().trim();
-        Session sess = Session.getInstance();
-        int userId = sess.getUid();
-
-        if (firstName.isEmpty() || lastName.isEmpty() || addr.isEmpty() || contactNum.isEmpty() || emailAddr.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Input Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        config conf = new config();
-        java.sql.Connection conn = null;
-        java.sql.PreparedStatement pst = null;
-
-        try {
-            conn = conf.getConnection();
-            String sql = "UPDATE users SET fname = ?, lname = ?, address = ?, contact = ?, email = ? WHERE U_Id = ?";
-            pst = conn.prepareStatement(sql);
-            pst.setString(1, firstName);
-            pst.setString(2, lastName);
-            pst.setString(3, addr);
-            pst.setString(4, contactNum);
-            pst.setString(5, emailAddr);
-            pst.setInt(6, userId);
-
-            int updated = pst.executeUpdate();
-            if (updated > 0) {
-                JOptionPane.showMessageDialog(this, "Details updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-                // Optionally update session info
-                sess.setFname(firstName);
-                sess.setLname(lastName);
-                sess.setAddress(addr);
-                sess.setContact(contactNum);
-                sess.setEmail(emailAddr);
-            } else {
-                JOptionPane.showMessageDialog(this, "Update failed. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error updating details: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            try {
-                if (pst != null) pst.close();
-                if (conn != null) conf.closeConnection();
-            } catch (Exception e) {
-                // ignore
-            }
-        }
-    }//GEN-LAST:event_updateCitizenMouseClicked
      
     /**
      * @param args the command line arguments
@@ -522,14 +470,142 @@ public class accountDetails extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(accountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(citizenProfle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(accountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(citizenProfle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(accountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(citizenProfle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(accountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(citizenProfle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -662,7 +738,7 @@ public class accountDetails extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new accountDetails().setVisible(true);
+                new citizenProfle().setVisible(true);
             }
         });
     }
@@ -680,6 +756,7 @@ public class accountDetails extends javax.swing.JFrame {
     private javax.swing.JTextField email;
     private javax.swing.JTextField fname;
     private javax.swing.JPanel header;
+    private javax.swing.JLabel image;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -698,7 +775,7 @@ public class accountDetails extends javax.swing.JFrame {
     private javax.swing.JPanel navbar;
     private javax.swing.JPanel p_add;
     private javax.swing.JTextField uname;
-    private javax.swing.JButton updateCitizen;
+    private javax.swing.JButton updateimage;
     private javax.swing.JLabel user_name;
     // End of variables declaration//GEN-END:variables
 }

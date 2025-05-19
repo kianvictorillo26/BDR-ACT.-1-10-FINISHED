@@ -3,12 +3,12 @@ package BDR;
 
 import ADMIN.adminDashBoard;
 import BDR.registrationForm;
-import ADMIN.citizenForm;
-import ADMIN.forgotpassword;
+import BDR.forgotpassword;
 import CITIZEN.citizenDashBoard;
-import Config.Session;
+import config.Session;
 import config.config;
-import Config.passwordHasher;
+import config.passwordHasher;
+import config.logger;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.security.NoSuchAlgorithmException;
@@ -38,6 +38,8 @@ public class loginForm extends javax.swing.JFrame {
     static String status;
     static String type;
     
+
+
 public static boolean logAcc(String username, String password) {
     config conf = new config();
     Connection connection = null;
@@ -73,6 +75,36 @@ public static boolean logAcc(String username, String password) {
                 sess.setStatus(resultSet.getString("status"));
                 sess.setUserType(resultSet.getString("account_type")); // Added this line
                 
+                // Check citizen status if user is citizen
+                if ("citizen".equalsIgnoreCase(sess.getAccount_type())) {
+                    String citizenStatus = null;
+                    try {
+                        java.sql.Connection conn = new config().getConnection();
+                        java.sql.PreparedStatement pst = conn.prepareStatement("SELECT status FROM citizens WHERE U_Id = ?");
+                        pst.setInt(1, sess.getUid());
+                        java.sql.ResultSet rs = pst.executeQuery();
+                        if (rs.next()) {
+                            citizenStatus = rs.getString("status");
+                        }
+                        rs.close();
+                        pst.close();
+                        conn.close();
+                    } catch (Exception e) {
+                        // Log or handle exception if needed
+                    }
+                    if ("Pending".equalsIgnoreCase(citizenStatus)) {
+                        // If citizen status is pending, do not allow to proceed to citizenDashBoard
+                        JOptionPane.showMessageDialog(null, "Your citizen registration is still pending approval. You will be redirected to the user dashboard.", "Pending Approval", JOptionPane.INFORMATION_MESSAGE);
+                        sess.setAccount_type("user"); // Downgrade to user to redirect to userDashboardRevise
+                    }
+                }
+                
+                // Log user login
+                logger.logToDatabase(sess.getUid(), "User logged in");
+                logger.info("User logged in: " + sess.getUid());
+                
+                // Do not close connection here; let caller manage connection lifecycle
+                
                 return true;
             } else {
                 System.out.println("DEBUG - Password mismatch");
@@ -96,7 +128,8 @@ public static boolean logAcc(String username, String password) {
         try {
             if (resultSet != null) resultSet.close();
             if (pstmt != null) pstmt.close();
-            if (connection != null) conf.closeConnection();
+            // Removed closing connection here to avoid premature close
+            // if (connection != null) conf.closeConnection();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -160,6 +193,7 @@ Color navcolor = new Color(41,50,57);
         jLabel1.setBounds(80, 30, 590, 60);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("LOGIN PAGE");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(300, 90, 140, 30);
@@ -169,16 +203,19 @@ Color navcolor = new Color(41,50,57);
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("BARANGGAY DOCUMENT REQUEST");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 280, 30));
 
         jLabel5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Management System");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
 
         userName.setBackground(new java.awt.Color(137, 207, 241));
+        userName.setForeground(new java.awt.Color(0, 0, 0));
         userName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        userName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Username:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        userName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Username:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         userName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userNameActionPerformed(evt);
@@ -187,8 +224,9 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 220, 50));
 
         userPass.setBackground(new java.awt.Color(137, 207, 241));
+        userPass.setForeground(new java.awt.Color(0, 0, 0));
         userPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        userPass.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        userPass.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Password:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         userPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userPassActionPerformed(evt);
@@ -213,6 +251,7 @@ Color navcolor = new Color(41,50,57);
 
         signinButton.setBackground(new java.awt.Color(137, 207, 241));
         signinButton.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        signinButton.setForeground(new java.awt.Color(0, 0, 0));
         signinButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         signinButton.setText("CANCEL");
         signinButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,6 +274,7 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 240, 20));
 
         showpass.setBackground(new java.awt.Color(137, 207, 241));
+        showpass.setForeground(new java.awt.Color(0, 0, 0));
         showpass.setText("Show Password");
         showpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,6 +300,7 @@ Color navcolor = new Color(41,50,57);
 
         signinButton1.setBackground(new java.awt.Color(137, 207, 241));
         signinButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        signinButton1.setForeground(new java.awt.Color(0, 0, 0));
         signinButton1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         signinButton1.setText("LOG IN");
         signinButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -278,6 +319,7 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(logIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 130, 40));
 
         creatAccount.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        creatAccount.setForeground(new java.awt.Color(0, 0, 0));
         creatAccount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         creatAccount.setText("New User? Click Here to Register.");
         creatAccount.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -288,6 +330,7 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(creatAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 220, 30));
 
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Fogot Password");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -410,16 +453,18 @@ if (user.isEmpty() || pass.isEmpty()) {
         String status = sess.getStatus();
         String userType = sess.getAccount_type(); // Changed to getAccount_type()
         
-        // Temporary: Allow both "Active" and "Pending" status
-        if (!"Active".equalsIgnoreCase(status) && !"Pending".equalsIgnoreCase(status)) {
+        // Only allow "Active" status to log in
+        if (!"Active".equalsIgnoreCase(status)) {
             JOptionPane.showMessageDialog(null, "Account not active. Contact admin.");
         } else {
             JOptionPane.showMessageDialog(null, "Login successful");
             
             if ("admin".equalsIgnoreCase(userType)) {
                 new adminDashBoard().setVisible(true);
+            } else if ("citizen".equalsIgnoreCase(userType)) {
+                new CITIZEN.citizenDashBoard().setVisible(true);
             } else {
-                new citizenDashBoard().setVisible(true);
+                new USER.userDashboardRevise().setVisible(true);
             }
             this.dispose();
         }
