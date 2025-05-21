@@ -123,11 +123,11 @@ public class manageRequests extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         requesttable = new javax.swing.JTable();
         backbutton = new javax.swing.JLabel();
-        filterby = new javax.swing.JComboBox<>();
         rejectrequest = new javax.swing.JButton();
         approverequest = new javax.swing.JButton();
         printRequest = new javax.swing.JButton();
         viewRequest = new javax.swing.JButton();
+        filterby = new javax.swing.JComboBox<>();
 
         jButton1.setText("jButton1");
 
@@ -250,7 +250,6 @@ public class manageRequests extends javax.swing.JFrame {
         maindesktop.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 610, 300));
 
         backbutton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        backbutton.setForeground(new java.awt.Color(0, 0, 0));
         backbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_Folder/back-arrow.png"))); // NOI18N
         backbutton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -259,13 +258,8 @@ public class manageRequests extends javax.swing.JFrame {
         });
         maindesktop.add(backbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 50));
 
-        filterby.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        filterby.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filter By:", "Pending", "Rejected", "Approved" }));
-        maindesktop.add(filterby, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 180, 40));
-
         rejectrequest.setBackground(new java.awt.Color(137, 207, 241));
         rejectrequest.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        rejectrequest.setForeground(new java.awt.Color(0, 0, 0));
         rejectrequest.setText("REJECT");
         rejectrequest.setBorder(null);
         rejectrequest.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -277,7 +271,6 @@ public class manageRequests extends javax.swing.JFrame {
 
         approverequest.setBackground(new java.awt.Color(137, 207, 241));
         approverequest.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        approverequest.setForeground(new java.awt.Color(0, 0, 0));
         approverequest.setText("APPROVE");
         approverequest.setBorder(null);
         approverequest.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -289,7 +282,6 @@ public class manageRequests extends javax.swing.JFrame {
 
         printRequest.setBackground(new java.awt.Color(137, 207, 241));
         printRequest.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        printRequest.setForeground(new java.awt.Color(0, 0, 0));
         printRequest.setText("PRINT");
         printRequest.setBorder(null);
         printRequest.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -306,7 +298,6 @@ public class manageRequests extends javax.swing.JFrame {
 
         viewRequest.setBackground(new java.awt.Color(137, 207, 241));
         viewRequest.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        viewRequest.setForeground(new java.awt.Color(0, 0, 0));
         viewRequest.setText("VIEW");
         viewRequest.setBorder(null);
         viewRequest.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -320,6 +311,10 @@ public class manageRequests extends javax.swing.JFrame {
             }
         });
         maindesktop.add(viewRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 90, 40));
+
+        filterby.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        filterby.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Filter By:", "Pending", "Rejected", "Approved" }));
+        maindesktop.add(filterby, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 180, 40));
 
         jPanel2.add(maindesktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 710, 380));
 

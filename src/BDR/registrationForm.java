@@ -126,7 +126,6 @@ Color navcolor = new Color(41,50,57);
         jLabel1.setBounds(80, 30, 590, 60);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("REGISTRATION PAGE ");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(280, 90, 240, 30);
@@ -139,7 +138,6 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 240, 20));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("First Name:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, 30));
 
@@ -155,7 +153,6 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 180, 30));
 
         jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Last Name:");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 30));
 
@@ -171,7 +168,6 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 180, 30));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Address:");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, 30));
 
@@ -187,7 +183,6 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 180, 30));
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Contact Number:");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, 30));
 
@@ -203,7 +198,6 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 180, 30));
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Email:");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, 30));
 
@@ -219,7 +213,6 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 180, 30));
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("User Name:");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, 30));
 
@@ -235,7 +228,6 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 180, 30));
 
         jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Password:");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, 30));
 
@@ -243,7 +235,6 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(utype, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 180, 30));
 
         jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Security Answer:");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, -1, 30));
 
@@ -253,7 +244,6 @@ Color navcolor = new Color(41,50,57);
 
         jLabel2.setBackground(new java.awt.Color(110, 177, 214));
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("REGISTER");
         jLabel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -274,7 +264,6 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(pname, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 180, 30));
 
         jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("User Type:");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, 30));
 
@@ -290,18 +279,21 @@ Color navcolor = new Color(41,50,57);
         jPanel2.add(sac, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 180, 30));
 
         jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Security Question:");
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, 30));
 
         secquestion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Security Question", "What is your favorite color?", "Where were you born?", "What is the name of your first pet?", "What is your favorite food?", "What city did you grow up on?" }));
+        secquestion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                secquestionActionPerformed(evt);
+            }
+        });
         jPanel2.add(secquestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 180, 30));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(50, 120, 680, 300);
 
         maximize.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        maximize.setForeground(new java.awt.Color(0, 0, 0));
         maximize.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         maximize.setText("—");
         maximize.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -313,7 +305,6 @@ Color navcolor = new Color(41,50,57);
         maximize.setBounds(690, 10, 30, 22);
 
         close.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        close.setForeground(new java.awt.Color(0, 0, 0));
         close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         close.setText("x");
         close.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -369,7 +360,7 @@ Color navcolor = new Color(41,50,57);
         String Password = pname.getText().trim();
         String Address = address.getText().trim();  // Added address field
         String Contact = contact.getText().trim();  // Added contact field
-               String Sec = secquestion.getSelectedItem().toString().trim();
+        String Sec = secquestion.getSelectedItem().toString().trim();
         String Sac = sac.getText().toLowerCase().trim();
         config connect = new config();
 
@@ -465,6 +456,10 @@ Color navcolor = new Color(41,50,57);
     private void fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fnameActionPerformed
+
+    private void secquestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_secquestionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_secquestionActionPerformed
 
     /**
      * @param args the command line arguments

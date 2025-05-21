@@ -66,6 +66,7 @@ public class accountDetails extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         uname = new javax.swing.JTextField();
         updateCitizen = new javax.swing.JButton();
+        backbutton = new javax.swing.JLabel();
 
         p_add.setBackground(new java.awt.Color(41, 50, 57));
         p_add.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -205,7 +206,6 @@ public class accountDetails extends javax.swing.JFrame {
         header.add(maximize, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 0, 30, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CITIZEN INFORMATION");
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -220,7 +220,6 @@ public class accountDetails extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("First Name:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, 30));
 
@@ -236,7 +235,6 @@ public class accountDetails extends javax.swing.JFrame {
         jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 180, 30));
 
         jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Last Name:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, 30));
 
@@ -252,7 +250,6 @@ public class accountDetails extends javax.swing.JFrame {
         jPanel1.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 180, 30));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Address:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, 30));
 
@@ -268,7 +265,6 @@ public class accountDetails extends javax.swing.JFrame {
         jPanel1.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 180, 30));
 
         jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Contact Number:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, 30));
 
@@ -284,7 +280,6 @@ public class accountDetails extends javax.swing.JFrame {
         jPanel1.add(contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 180, 30));
 
         jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Email:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, 30));
 
@@ -300,7 +295,6 @@ public class accountDetails extends javax.swing.JFrame {
         jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 180, 30));
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("User Name:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, 30));
 
@@ -318,7 +312,6 @@ public class accountDetails extends javax.swing.JFrame {
 
         updateCitizen.setBackground(new java.awt.Color(137, 207, 241));
         updateCitizen.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        updateCitizen.setForeground(new java.awt.Color(0, 0, 0));
         updateCitizen.setText("UPDATE");
         updateCitizen.setBorder(null);
         updateCitizen.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -327,6 +320,15 @@ public class accountDetails extends javax.swing.JFrame {
             }
         });
         jPanel1.add(updateCitizen, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 250, 40));
+
+        backbutton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        backbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_Folder/back-arrow.png"))); // NOI18N
+        backbutton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backbuttonMouseClicked(evt);
+            }
+        });
+        jPanel1.add(backbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 50));
 
         maindesktop.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -504,6 +506,11 @@ public class accountDetails extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_updateCitizenMouseClicked
+
+    private void backbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backbuttonMouseClicked
+        new citizenDashBoard().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backbuttonMouseClicked
      
     /**
      * @param args the command line arguments
@@ -672,6 +679,7 @@ public class accountDetails extends javax.swing.JFrame {
     private javax.swing.JPanel acc;
     private javax.swing.JLabel acc_id;
     private javax.swing.JTextField address;
+    private javax.swing.JLabel backbutton;
     private javax.swing.JLabel cfname;
     private javax.swing.JPanel changePass;
     private javax.swing.JLabel clname;

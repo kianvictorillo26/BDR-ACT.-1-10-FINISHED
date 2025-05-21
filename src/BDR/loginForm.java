@@ -457,7 +457,7 @@ if (user.isEmpty() || pass.isEmpty()) {
         if (!"Active".equalsIgnoreCase(status)) {
             JOptionPane.showMessageDialog(null, "Account not active. Contact admin.");
         } else {
-            JOptionPane.showMessageDialog(null, "Login successful");
+            JOptionPane.showMessageDialog(null, "Login successfully!!");
             
             if ("admin".equalsIgnoreCase(userType)) {
                 new adminDashBoard().setVisible(true);

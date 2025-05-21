@@ -48,6 +48,8 @@ public class citizenDashBoard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         citizenName = new javax.swing.JLabel();
         user_name = new javax.swing.JLabel();
+        logout = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
         acc_id = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         close = new javax.swing.JLabel();
@@ -124,12 +126,40 @@ public class citizenDashBoard extends javax.swing.JFrame {
         user_name.setText("CURRENT USER ID:");
         navbar.add(user_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 160, 28));
 
+        logout.setBackground(new java.awt.Color(41, 50, 57));
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutMouseExited(evt);
+            }
+        });
+        logout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setBackground(new java.awt.Color(44, 71, 35));
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("LOGOUT");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+        logout.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 80, 30));
+
+        navbar.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 160, 50));
+
         acc_id.setBackground(new java.awt.Color(44, 71, 35));
         acc_id.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         acc_id.setForeground(new java.awt.Color(255, 255, 255));
         acc_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_id.setText("Account ID");
-        navbar.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 160, 28));
+        navbar.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 160, 28));
 
         jPanel2.add(navbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 430));
 
@@ -154,7 +184,6 @@ public class citizenDashBoard extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CITIZEN DASHBOARD");
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -220,7 +249,7 @@ public class citizenDashBoard extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("MY REQUESTS");
+        jLabel6.setText("MY REQUEST");
         myrequests.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 160, -1));
 
         maindesktop.add(myrequests, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 157, 148));
@@ -313,6 +342,27 @@ public class citizenDashBoard extends javax.swing.JFrame {
       new accountDetails().setVisible(true);
       this.dispose();
     }//GEN-LAST:event_myaccountMouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        Session sess = Session.getInstance();
+        //logger.logToDatabase(sess.getUid(), "User logged out");
+        //logger.info("User logged out: " + sess.getUid());
+        new loginForm().setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_logoutMouseClicked
+
+    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
+        logout.setBackground(bodycolor);
+    }//GEN-LAST:event_logoutMouseEntered
+
+    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
+        logout.setBackground(navcolor);
+    }//GEN-LAST:event_logoutMouseExited
      
     /**
      * @param args the command line arguments
@@ -427,8 +477,10 @@ public class citizenDashBoard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel logout;
     public javax.swing.JDesktopPane maindesktop;
     private javax.swing.JLabel maximize;
     private javax.swing.JPanel myaccount;

@@ -295,7 +295,7 @@ public class adminDashBoard extends javax.swing.JFrame {
         manageRequests.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 160, -1));
 
         jPanel3.add(manageRequests);
-        manageRequests.setBounds(540, 30, 160, 150);
+        manageRequests.setBounds(520, 30, 160, 150);
 
         manageUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -352,7 +352,7 @@ public class adminDashBoard extends javax.swing.JFrame {
         manageDocuments.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 120, 100));
 
         jPanel3.add(manageDocuments);
-        manageDocuments.setBounds(370, 30, 160, 150);
+        manageDocuments.setBounds(350, 30, 160, 150);
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 710, 210));
 

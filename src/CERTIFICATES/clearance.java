@@ -55,30 +55,25 @@ public class clearance extends javax.swing.JFrame {
         clearancepanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         age.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        age.setForeground(new java.awt.Color(0, 0, 0));
         age.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         age.setText("age");
         clearancepanel.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 30, 20));
 
         brgycaptani.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        brgycaptani.setForeground(new java.awt.Color(0, 0, 0));
         brgycaptani.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         brgycaptani.setText("Baranggay Captain");
         clearancepanel.add(brgycaptani, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 460, 170, 20));
 
         name.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        name.setForeground(new java.awt.Color(0, 0, 0));
         name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name.setText("name");
         clearancepanel.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 90, 20));
 
         dateissued.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        dateissued.setForeground(new java.awt.Color(0, 0, 0));
         dateissued.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateissued.setText("date");
         clearancepanel.add(dateissued, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 140, 20));
 
-        clearanceimage.setForeground(new java.awt.Color(0, 0, 0));
         clearanceimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CERTIFICATES/clearance.png"))); // NOI18N
         clearancepanel.add(clearanceimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, -1, -1));
 

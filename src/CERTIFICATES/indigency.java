@@ -55,30 +55,25 @@ public class indigency extends javax.swing.JFrame {
         indigencypanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         age.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        age.setForeground(new java.awt.Color(0, 0, 0));
         age.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         age.setText("age");
         indigencypanel.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 240, 80, 20));
 
         brgycaptani.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        brgycaptani.setForeground(new java.awt.Color(0, 0, 0));
         brgycaptani.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         brgycaptani.setText("Baranggay Captain");
         indigencypanel.add(brgycaptani, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, 170, 20));
 
         name.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        name.setForeground(new java.awt.Color(0, 0, 0));
         name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name.setText("name");
         indigencypanel.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 90, 20));
 
         dateissued.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
-        dateissued.setForeground(new java.awt.Color(0, 0, 0));
         dateissued.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateissued.setText("date");
-        indigencypanel.add(dateissued, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 180, 20));
+        indigencypanel.add(dateissued, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 160, 20));
 
-        clearanceimage.setForeground(new java.awt.Color(0, 0, 0));
         clearanceimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CERTIFICATES/indigency.png"))); // NOI18N
         indigencypanel.add(clearanceimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, -1, -1));
 
