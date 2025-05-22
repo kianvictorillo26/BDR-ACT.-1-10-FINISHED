@@ -48,8 +48,8 @@ public class forgotpassword extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         sa = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         checkusername = new javax.swing.JButton();
+        backbutton = new javax.swing.JLabel();
         navbar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         cfname = new javax.swing.JLabel();
@@ -85,7 +85,6 @@ public class forgotpassword extends javax.swing.JFrame {
         header.add(maximize, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 0, 30, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Forgot Password");
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -97,7 +96,6 @@ public class forgotpassword extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         text1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        text1.setForeground(new java.awt.Color(0, 0, 0));
         text1.setText("User Name:");
         jPanel1.add(text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, 30));
 
@@ -142,7 +140,6 @@ public class forgotpassword extends javax.swing.JFrame {
         jPanel1.add(sec, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 190, 30));
 
         jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Security Question:");
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, 30));
 
@@ -158,26 +155,23 @@ public class forgotpassword extends javax.swing.JFrame {
         jPanel1.add(sa, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 190, 30));
 
         jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Security Answer:");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, 30));
 
-        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_Folder/back-arrow.png"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 50));
-
         checkusername.setBackground(new java.awt.Color(137, 207, 241));
         checkusername.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        checkusername.setForeground(new java.awt.Color(0, 0, 0));
         checkusername.setText("CHECK");
         checkusername.setBorder(null);
-        checkusername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkusernameActionPerformed(evt);
+        jPanel1.add(checkusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 60, 30));
+
+        backbutton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        backbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_Folder/back-arrow.png"))); // NOI18N
+        backbutton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backbuttonMouseClicked(evt);
             }
         });
-        jPanel1.add(checkusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 60, 30));
+        jPanel1.add(backbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 50, 710, 370));
 
@@ -310,6 +304,13 @@ public class forgotpassword extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_saActionPerformed
 
+    private void backbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backbuttonMouseClicked
+
+        loginForm lf = new loginForm();
+        lf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backbuttonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -347,6 +348,7 @@ public class forgotpassword extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acc_id;
+    private javax.swing.JLabel backbutton;
     private javax.swing.JLabel cfname;
     private javax.swing.JButton checkusername;
     private javax.swing.JLabel clname;
@@ -357,7 +359,6 @@ public class forgotpassword extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel maximize;
     private javax.swing.JPanel navbar;

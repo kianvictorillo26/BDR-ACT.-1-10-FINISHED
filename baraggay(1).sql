@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2025 at 01:06 PM
+-- Generation Time: May 22, 2025 at 05:56 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,7 +45,8 @@ INSERT INTO `citizens` (`citizen_id`, `U_Id`, `registration_date`, `approved_by`
 (2, 6, '2025-05-18 23:06:12', NULL, 'Active', 'src/userimages/admin-logo.png'),
 (3, 18, '2025-05-19 15:38:27', NULL, 'Active', 'src/userimages/admin-logo.png'),
 (4, 19, '2025-05-19 15:41:46', NULL, 'Active', 'src/userimages/admin-logo.png'),
-(5, 20, '2025-05-19 15:44:58', NULL, 'Active', 'src/userimages/admin-logo.png');
+(5, 20, '2025-05-19 15:44:58', NULL, 'Active', 'src/userimages/admin-logo.png'),
+(6, 29, '2025-05-22 23:49:08', NULL, 'Active', '');
 
 -- --------------------------------------------------------
 
@@ -182,7 +183,19 @@ INSERT INTO `logs` (`log_id`, `user_id`, `action`, `timestamp`) VALUES
 (93, 6, 'User logged in', '2025-05-19 18:54:10'),
 (94, 6, 'User logged in', '2025-05-19 18:56:23'),
 (95, 6, 'User logged in', '2025-05-19 18:59:32'),
-(96, 6, 'User logged in', '2025-05-19 19:06:18');
+(96, 6, 'User logged in', '2025-05-19 19:06:18'),
+(97, 28, 'User logged in', '2025-05-22 23:45:30'),
+(98, 28, 'User logged out', '2025-05-22 23:46:41'),
+(99, 28, 'User logged in', '2025-05-22 23:47:54'),
+(100, 29, 'User logged in', '2025-05-22 23:48:39'),
+(101, 29, 'User logged in', '2025-05-22 23:48:51'),
+(102, 29, 'User logged in', '2025-05-22 23:49:17'),
+(103, 28, 'User logged in', '2025-05-22 23:49:28'),
+(104, 28, 'User logged out', '2025-05-22 23:49:41'),
+(105, 29, 'User logged in', '2025-05-22 23:49:47'),
+(106, 28, 'User logged in', '2025-05-22 23:50:22'),
+(107, 28, 'User logged out', '2025-05-22 23:50:45'),
+(108, 29, 'User logged in', '2025-05-22 23:50:51');
 
 -- --------------------------------------------------------
 
@@ -208,7 +221,10 @@ INSERT INTO `requests` (`req_id`, `citizen_id`, `doc_id`, `request_date`, `statu
 (2, 1, 8, '2025-05-19 13:21:19', 'Approved', 6, '2025-05-19 13:34:29'),
 (3, 1, 9, '2025-05-19 13:37:36', 'Approved', 6, '2025-05-19 18:20:01'),
 (6, 4, 8, '2025-05-19 16:23:47', 'Rejected', 6, '2025-05-19 18:20:04'),
-(7, 4, 9, '2025-05-19 18:30:03', 'Approved', 6, '2025-05-19 18:44:23');
+(7, 4, 9, '2025-05-19 18:30:03', 'Approved', 6, '2025-05-19 18:44:23'),
+(8, 6, 8, '2025-05-22 23:49:53', 'Approved', 28, '2025-05-22 23:50:34'),
+(9, 6, 9, '2025-05-22 23:50:00', 'Approved', 28, '2025-05-22 23:50:37'),
+(10, 6, 10, '2025-05-22 23:50:13', 'Approved', 28, '2025-05-22 23:50:31');
 
 -- --------------------------------------------------------
 
@@ -241,13 +257,8 @@ INSERT INTO `users` (`U_Id`, `fname`, `lname`, `address`, `account_type`, `email
 (18, 'John', 'Doe', 'Purok 3', 'citizen', 'john.doe@example.com', '09171234567', 'johndoe', 'gxwjeSjmISvtqkRRpRSs4xdFYvZ2H2oVei/lCCs24vs=', 'active', 'What is your favorite color?', 'Blue'),
 (19, 'Jane', 'Smithy', 'Purok 1', 'citizen', 'jane.smith@example.com', '09181234567', 'jane', 'gxwjeSjmISvtqkRRpRSs4xdFYvZ2H2oVei/lCCs24vs=', 'active', 'Where were you born?', 'Manila'),
 (20, 'Mike', 'Brown', 'Purok 1', 'citizen', 'michael.brown@example.com', '09191234567', 'mike', 'gxwjeSjmISvtqkRRpRSs4xdFYvZ2H2oVei/lCCs24vs=', 'active', 'What is the name of your first pet?', 'Buddy'),
-(21, 'Emily', 'Johnson', '101 Maple Ave', 'user', 'emily.j@example.com', '09201234567', 'emjohnson', 'gxwjeSjmISvtqkRRpRSs4xdFYvZ2H2oVei/lCCs24vs=', 'pending', 'What is your favorite food?', 'Pizza'),
-(22, 'David', 'Lee', '202 Oak Rd', 'user', 'david.lee@example.com', '09211234567', 'dlee', 'gxwjeSjmISvtqkRRpRSs4xdFYvZ2H2oVei/lCCs24vs=', 'active', 'What city did you grow up on?', 'Quezon City'),
-(23, 'Samantha', 'Garcia', '303 Birch Ln', 'user', 'samantha.g@example.com', '09221234567', 'samgarcia', 'gxwjeSjmISvtqkRRpRSs4xdFYvZ2H2oVei/lCCs24vs=', 'active', 'What is your favorite color?', 'Green'),
-(24, 'Robert', 'Martinez', '404 Cedar Ct', 'user', 'robert.m@example.com', '09231234567', 'robmart', 'gxwjeSjmISvtqkRRpRSs4xdFYvZ2H2oVei/lCCs24vs=', 'active', 'Where were you born?', 'Cebu City'),
-(25, 'Jessica', 'Lopez', '505 Spruce Dr', 'user', 'jessica.l@example.com', '09241234567', 'jlopez', 'gxwjeSjmISvtqkRRpRSs4xdFYvZ2H2oVei/lCCs24vs=', 'pending', 'What is the name of your first pet?', 'Max'),
-(26, 'Thomas', 'Kim', '606 Willow Way', 'user', 'thomas.k@example.com', '09251234567', 'tomkim', 'gxwjeSjmISvtqkRRpRSs4xdFYvZ2H2oVei/lCCs24vs=', 'active', 'What is your favorite food?', 'Sushi'),
-(27, 'Linda', 'Clark', '707 Redwood Blvd', 'user', 'linda.c@example.com', '09261234567', 'lclark', 'gxwjeSjmISvtqkRRpRSs4xdFYvZ2H2oVei/lCCs24vs=', 'active', 'What city did you grow up on?', 'Davao City');
+(28, 'cap. KIAN', 'victorillo', 'ward 4', 'Admin', 'kian@gmail.com', '132313', 'kian', '8y5jND7uKEfGH1S3OgGkAiRZ1lC1juFm3eckBDl7Lqs=', 'Active', 'What is your favorite color?', 'red'),
+(29, 'jhonard', 'victorillo', 'ward 1', 'citizen', 'j@gmail.com', '13213213', 'jhonard', 'Ti+UIzZkMVmJ6NvTWGo3QiCIx/0ASeRBpZroa4Nz7SA=', 'Active', 'What is your favorite color?', 'red');
 
 --
 -- Indexes for dumped tables
@@ -298,7 +309,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `citizens`
 --
 ALTER TABLE `citizens`
-  MODIFY `citizen_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `citizen_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `documents`
@@ -310,19 +321,19 @@ ALTER TABLE `documents`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `log_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `log_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `req_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `req_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `U_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `U_Id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
