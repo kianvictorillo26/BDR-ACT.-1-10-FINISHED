@@ -50,7 +50,6 @@ public class indigency extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(816, 1056));
-        setPreferredSize(new java.awt.Dimension(816, 1056));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         indigencypanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -59,27 +58,27 @@ public class indigency extends javax.swing.JFrame {
         age.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         age.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         age.setText("age");
-        indigencypanel.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 240, 80, 20));
+        indigencypanel.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 80, 20));
 
         brgycaptani.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         brgycaptani.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         brgycaptani.setText("Baranggay Captain");
-        indigencypanel.add(brgycaptani, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, 170, 20));
+        indigencypanel.add(brgycaptani, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 170, 20));
 
         name.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name.setText("name");
-        indigencypanel.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 90, 20));
+        indigencypanel.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 90, 20));
 
         dateissued.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         dateissued.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateissued.setText("date");
-        indigencypanel.add(dateissued, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, 160, 20));
+        indigencypanel.add(dateissued, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, 160, 20));
 
         clearanceimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CERTIFICATES/indigency.png"))); // NOI18N
-        indigencypanel.add(clearanceimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, -1, -1));
+        indigencypanel.add(clearanceimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
-        getContentPane().add(indigencypanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
+        getContentPane().add(indigencypanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 1060));
 
         pack();
         setLocationRelativeTo(null);

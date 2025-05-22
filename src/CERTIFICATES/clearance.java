@@ -49,7 +49,6 @@ public class clearance extends javax.swing.JFrame {
         clearanceimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(816, 1056));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         clearancepanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -58,27 +57,27 @@ public class clearance extends javax.swing.JFrame {
         age.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         age.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         age.setText("age");
-        clearancepanel.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 30, 20));
+        clearancepanel.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 30, 20));
 
         brgycaptani.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         brgycaptani.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         brgycaptani.setText("Baranggay Captain");
-        clearancepanel.add(brgycaptani, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 460, 170, 20));
+        clearancepanel.add(brgycaptani, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 170, 20));
 
         name.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name.setText("name");
-        clearancepanel.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 90, 20));
+        clearancepanel.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 90, 20));
 
         dateissued.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         dateissued.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateissued.setText("date");
-        clearancepanel.add(dateissued, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 140, 20));
+        clearancepanel.add(dateissued, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 140, 20));
 
         clearanceimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CERTIFICATES/clearance.png"))); // NOI18N
-        clearancepanel.add(clearanceimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, -1, -1));
+        clearancepanel.add(clearanceimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
-        getContentPane().add(clearancepanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 600));
+        getContentPane().add(clearancepanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 1060));
 
         pack();
         setLocationRelativeTo(null);

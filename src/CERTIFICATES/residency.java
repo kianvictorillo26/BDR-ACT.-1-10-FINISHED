@@ -44,7 +44,6 @@ public class residency extends javax.swing.JFrame {
         clearanceimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(816, 1056));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         residencypanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -53,22 +52,22 @@ public class residency extends javax.swing.JFrame {
         brgycaptani.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         brgycaptani.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         brgycaptani.setText("Baranggay Captain");
-        residencypanel.add(brgycaptani, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, 170, 20));
+        residencypanel.add(brgycaptani, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, 170, 20));
 
         name.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name.setText("name");
-        residencypanel.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 100, 20));
+        residencypanel.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 100, 20));
 
         purok.setFont(new java.awt.Font("Cambria", 1, 12)); // NOI18N
         purok.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         purok.setText("date");
-        residencypanel.add(purok, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 100, 20));
+        residencypanel.add(purok, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 100, 20));
 
         clearanceimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CERTIFICATES/residency (2).png"))); // NOI18N
-        residencypanel.add(clearanceimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, -1, -1));
+        residencypanel.add(clearanceimage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
-        getContentPane().add(residencypanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
+        getContentPane().add(residencypanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 1060));
 
         pack();
         setLocationRelativeTo(null);
