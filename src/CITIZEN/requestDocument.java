@@ -106,7 +106,6 @@ public class requestDocument extends javax.swing.JFrame {
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 240, 20));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Citizen:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 130, 30));
 
@@ -116,7 +115,6 @@ public class requestDocument extends javax.swing.JFrame {
 
         requestDocument.setBackground(new java.awt.Color(110, 177, 214));
         requestDocument.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        requestDocument.setForeground(new java.awt.Color(0, 0, 0));
         requestDocument.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         requestDocument.setText("SUBMIT");
         requestDocument.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -130,7 +128,6 @@ public class requestDocument extends javax.swing.JFrame {
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 180, 50));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Document Type:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 130, 30));
 
@@ -144,15 +141,14 @@ public class requestDocument extends javax.swing.JFrame {
                 datefieldActionPerformed(evt);
             }
         });
-        jPanel2.add(datefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 180, 30));
+        jPanel2.add(datefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 230, 30));
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Date:");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 130, 30));
 
         documenttypecbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Document" }));
-        jPanel2.add(documenttypecbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 180, 30));
+        jPanel2.add(documenttypecbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 230, 30));
 
         citizenName.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         citizenName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -164,13 +160,12 @@ public class requestDocument extends javax.swing.JFrame {
                 citizenNameActionPerformed(evt);
             }
         });
-        jPanel2.add(citizenName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 180, 30));
+        jPanel2.add(citizenName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 230, 30));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(40, 100, 680, 300);
 
         back.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        back.setForeground(new java.awt.Color(0, 0, 0));
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_Folder/back-arrow.png"))); // NOI18N
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -276,7 +271,7 @@ public class requestDocument extends javax.swing.JFrame {
     }//GEN-LAST:event_requestDocumentMouseClicked
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        new adminDashBoard().setVisible(true);
+        new citizenDashBoard().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backMouseClicked
 

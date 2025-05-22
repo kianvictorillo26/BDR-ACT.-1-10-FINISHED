@@ -7,7 +7,9 @@ package ADMIN.Requests;
 
 import static ADMIN.Documents.createDocument.sess;
 import ADMIN.adminDashBoard;
+import BDR.loginForm;
 import config.PanelPrinter;
+import config.Session;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
@@ -132,6 +134,11 @@ public class manageRequests extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(123, 181, 104));
@@ -593,6 +600,20 @@ public class manageRequests extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_viewRequestActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Session sess = Session.getInstance();
+        
+        if(sess.getUid()== 0){
+            JOptionPane.showMessageDialog(null, " No Account, Log In First!");
+            loginForm lf = new loginForm();
+            lf.setVisible(true);
+            this.dispose();            
+        }else{
+                 citizenName.setText(""+sess.getFname());
+                 acc_id.setText(""+sess.getUid());
+        } 
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

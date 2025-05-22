@@ -152,7 +152,7 @@ public class citizenDashBoard extends javax.swing.JFrame {
         });
         logout.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 80, 30));
 
-        navbar.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 160, 50));
+        navbar.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 160, 50));
 
         acc_id.setBackground(new java.awt.Color(44, 71, 35));
         acc_id.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N

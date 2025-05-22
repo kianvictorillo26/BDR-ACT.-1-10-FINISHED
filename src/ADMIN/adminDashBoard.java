@@ -109,7 +109,7 @@ public class adminDashBoard extends javax.swing.JFrame {
         logspage.add(users_page1);
         users_page1.setBounds(0, 10, 160, 30);
 
-        navbar.add(logspage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 160, 50));
+        navbar.add(logspage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 160, 50));
 
         logout.setBackground(new java.awt.Color(41, 50, 57));
         logout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -175,7 +175,7 @@ public class adminDashBoard extends javax.swing.JFrame {
         });
         account1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 80, 30));
 
-        navbar.add(account1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 160, 50));
+        navbar.add(account1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 160, 50));
 
         jPanel2.add(navbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 420));
 

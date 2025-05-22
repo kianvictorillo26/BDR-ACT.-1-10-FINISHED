@@ -6,6 +6,8 @@
 package ADMIN.Citizen;
 
 import ADMIN.adminDashBoard;
+import BDR.loginForm;
+import config.Session;
 import config.config;
 import java.awt.Color;
 import java.sql.Connection;
@@ -103,6 +105,11 @@ public class manageCitizen extends javax.swing.JFrame {
         backbutton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(123, 181, 104));
@@ -164,7 +171,7 @@ public class manageCitizen extends javax.swing.JFrame {
         addbutton.add(add);
         add.setBounds(40, 10, 80, 20);
 
-        navbar.add(addbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 160, 40));
+        navbar.add(addbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 160, 40));
 
         editbutton.setBackground(new java.awt.Color(41, 50, 57));
         editbutton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,7 +194,7 @@ public class manageCitizen extends javax.swing.JFrame {
         edit.setText("EDIT");
         editbutton.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 80, 20));
 
-        navbar.add(editbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 160, 40));
+        navbar.add(editbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 160, 40));
 
         activatebutton.setBackground(new java.awt.Color(41, 50, 57));
         activatebutton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -210,7 +217,7 @@ public class manageCitizen extends javax.swing.JFrame {
         activate.setText("ACTIVATE/DEACTIVATE");
         activatebutton.add(activate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 160, 20));
 
-        navbar.add(activatebutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 160, 40));
+        navbar.add(activatebutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 160, 40));
 
         deletebutton.setBackground(new java.awt.Color(41, 50, 57));
         deletebutton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -233,7 +240,7 @@ public class manageCitizen extends javax.swing.JFrame {
         delete.setText("DELETE");
         deletebutton.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 80, 20));
 
-        navbar.add(deletebutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 160, 40));
+        navbar.add(deletebutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 160, 40));
 
         jPanel2.add(navbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 420));
 
@@ -267,7 +274,6 @@ public class manageCitizen extends javax.swing.JFrame {
         maindesktop.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 610, 300));
 
         backbutton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        backbutton.setForeground(new java.awt.Color(0, 0, 0));
         backbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_Folder/back-arrow.png"))); // NOI18N
         backbutton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -390,6 +396,20 @@ public class manageCitizen extends javax.swing.JFrame {
     private void deletebuttonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deletebuttonMouseExited
          deletebutton.setBackground(navcolor);
     }//GEN-LAST:event_deletebuttonMouseExited
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Session sess = Session.getInstance();
+        
+        if(sess.getUid()== 0){
+            JOptionPane.showMessageDialog(null, " No Account, Log In First!");
+            loginForm lf = new loginForm();
+            lf.setVisible(true);
+            this.dispose();            
+        }else{
+                 citizenName.setText(""+sess.getFname());
+                 acc_id.setText(""+sess.getUid());
+        } 
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

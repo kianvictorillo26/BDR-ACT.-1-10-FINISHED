@@ -5,6 +5,7 @@
  */
 package BDR;
 
+import ADMIN.adminDashBoard;
 import BDR.loginForm;
 import config.passwordHasher;
 import config.Session;
@@ -61,7 +62,6 @@ public class changepassword extends javax.swing.JFrame {
         newpass = new javax.swing.JPasswordField();
         oldpassword = new javax.swing.JPasswordField();
         jLabel16 = new javax.swing.JLabel();
-        back1 = new javax.swing.JLabel();
         navbar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         cfname = new javax.swing.JLabel();
@@ -92,7 +92,6 @@ public class changepassword extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CHANGE PASSWORD");
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -125,7 +124,6 @@ public class changepassword extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         text1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        text1.setForeground(new java.awt.Color(0, 0, 0));
         text1.setText("User Name:");
         jPanel1.add(text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, 30));
 
@@ -178,12 +176,10 @@ public class changepassword extends javax.swing.JFrame {
         jPanel1.add(confirmpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 190, 30));
 
         jLabel13.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Confirm Password");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, 30));
 
         jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("New Password:");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, 30));
 
@@ -202,19 +198,8 @@ public class changepassword extends javax.swing.JFrame {
         jPanel1.add(oldpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 190, 30));
 
         jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Old Password");
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, -1, 30));
-
-        back1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        back1.setForeground(new java.awt.Color(0, 0, 0));
-        back1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_Folder/back-arrow.png"))); // NOI18N
-        back1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                back1MouseClicked(evt);
-            }
-        });
-        jPanel1.add(back1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 50, 710, 370));
 
@@ -246,7 +231,9 @@ public class changepassword extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
-        System.exit(0);
+        loginForm lf = new loginForm();
+        lf.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_closeMouseClicked
 
     private void maximizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maximizeMouseClicked
@@ -337,11 +324,6 @@ public class changepassword extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_oldpasswordActionPerformed
 
-    private void back1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back1MouseClicked
-//        new adminDashBoard().setVisible(true);
-//        this.dispose();
-    }//GEN-LAST:event_back1MouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -382,7 +364,6 @@ public class changepassword extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel back;
-    private javax.swing.JLabel back1;
     private javax.swing.JLabel cfname;
     private javax.swing.JLabel clname;
     private javax.swing.JLabel close;

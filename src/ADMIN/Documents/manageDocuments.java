@@ -6,6 +6,8 @@
 package ADMIN.Documents;
 
 import ADMIN.adminDashBoard;
+import BDR.loginForm;
+import config.Session;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -83,6 +85,11 @@ public class manageDocuments extends javax.swing.JFrame {
         backbutton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(123, 181, 104));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -223,7 +230,6 @@ public class manageDocuments extends javax.swing.JFrame {
         maindesktop.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 610, 300));
 
         backbutton.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        backbutton.setForeground(new java.awt.Color(0, 0, 0));
         backbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_Folder/back-arrow.png"))); // NOI18N
         backbutton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -349,6 +355,20 @@ public class manageDocuments extends javax.swing.JFrame {
         new adminDashBoard().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backbuttonMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Session sess = Session.getInstance();
+        
+        if(sess.getUid()== 0){
+            JOptionPane.showMessageDialog(null, " No Account, Log In First!");
+            loginForm lf = new loginForm();
+            lf.setVisible(true);
+            this.dispose();            
+        }else{
+                 citizenName.setText(""+sess.getFname());
+                 acc_id.setText(""+sess.getUid());
+        } 
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

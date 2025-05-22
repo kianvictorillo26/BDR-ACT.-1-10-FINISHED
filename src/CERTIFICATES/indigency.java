@@ -49,6 +49,8 @@ public class indigency extends javax.swing.JFrame {
         clearanceimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(816, 1056));
+        setPreferredSize(new java.awt.Dimension(816, 1056));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         indigencypanel.setBackground(new java.awt.Color(255, 255, 255));
