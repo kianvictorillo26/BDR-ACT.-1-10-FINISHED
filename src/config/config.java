@@ -9,6 +9,7 @@ public class config {
     public config() {
         try {
             connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/baraggay", "root", "");
+            connect.setAutoCommit(true);
             System.out.println("Connected to the database successfully!");
         } catch (SQLException ex) {
             System.out.println("Can't connect to database: " + ex.getMessage());

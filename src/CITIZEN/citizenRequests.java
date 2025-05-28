@@ -12,8 +12,10 @@ import BDR.loginForm;
 import java.awt.Color;
 import config.PanelPrinter;
 import config.Session;
+import config.logger;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;  // Added import for rs2xml library
+import java.sql.Connection;
 
 
 public class citizenRequests extends javax.swing.JFrame {
@@ -281,63 +283,98 @@ private void loadRequestsTable() {
 
         int reqId = (int) requesttable.getValueAt(selectedRow, 0);
         String docType = (String) requesttable.getValueAt(selectedRow, 1);
+        Connection con = null;
+        Connection logCon = null;
 
         try {
             config.config db = new config.config();
-            try (java.sql.Connection con = db.getConnection()) {
-                String sql = "SELECT u.fname, u.lname, d.doc_type, r.request_date " +
-                "FROM requests r " +
-                "JOIN citizens ci ON r.citizen_id = ci.citizen_id " +
-                "JOIN users u ON ci.U_Id = u.U_Id " +
-                "JOIN documents d ON r.doc_id = d.doc_id " +
-                "WHERE r.req_id = ?";
-                java.sql.PreparedStatement pst = con.prepareStatement(sql);
-                pst.setInt(1, reqId);
-                java.sql.ResultSet rs = pst.executeQuery();
+            con = db.getConnection();
+            
+            String sql = "SELECT u.fname, u.lname, d.doc_type, r.request_date " +
+            "FROM requests r " +
+            "JOIN citizens ci ON r.citizen_id = ci.citizen_id " +
+            "JOIN users u ON ci.U_Id = u.U_Id " +
+            "JOIN documents d ON r.doc_id = d.doc_id " +
+            "WHERE r.req_id = ?";
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, reqId);
+            java.sql.ResultSet rs = pst.executeQuery();
 
-                if (rs.next()) {
-                    String fname = rs.getString("fname");
-                    String lname = rs.getString("lname");
-                    java.sql.Date requestDate = rs.getDate("request_date");
+            if (rs.next()) {
+                String fname = rs.getString("fname");
+                String lname = rs.getString("lname");
+                java.sql.Date requestDate = rs.getDate("request_date");
+                Session sess = Session.getInstance();
 
-                    switch (docType.toLowerCase()) {
-                        case "barangay clearance":
+                // Create a separate connection for logging
+                logCon = new config.config().getConnection();
+                if (logCon == null) {
+                    logger.error("Failed to create logging connection");
+                    return;
+                }
+
+                switch (docType.toLowerCase()) {
+                    case "barangay clearance":
                         CERTIFICATES.clearance clearanceForm = new CERTIFICATES.clearance();
                         clearanceForm.setName(fname + " " + lname);
                         clearanceForm.setAge(""); // Age not available in schema
                         clearanceForm.setDateIssued(requestDate.toString());
                         clearanceForm.setBrgyCaptani("Baranggay Captain"); // Placeholder
                         clearanceForm.setVisible(true);
+                        try {
+                            logger.logToDatabase(logCon, sess.getUid(), "Printed Barangay Clearance", logger.LogLevel.INFO);
+                            logger.info("Citizen Printed Barangay Clearance (User ID: " + sess.getUid() + ")");
+                        } catch (Exception e) {
+                            logger.error("Failed to log clearance printing: " + e.getMessage(), e);
+                        }
                         new config.PanelPrinter(clearanceForm.clearancepanel).printPanel();
                         break;
-                        case "barangay indigency certificate":
+                    case "barangay indigency certificate":
                         CERTIFICATES.indigency indigencyForm = new CERTIFICATES.indigency();
                         indigencyForm.setName(fname + " " + lname);
                         indigencyForm.setAge(""); // Age not available in schema
                         indigencyForm.setDateIssued(requestDate.toString());
                         indigencyForm.setBrgyCaptani("Baranggay Captain"); // Placeholder
                         indigencyForm.setVisible(true);
+                        try {
+                            logger.logToDatabase(logCon, sess.getUid(), "Printed Barangay Indigency Certificate", logger.LogLevel.INFO);
+                            logger.info("Citizen Printed Barangay Indigency Certificate (User ID: " + sess.getUid() + ")");
+                        } catch (Exception e) {
+                            logger.error("Failed to log indigency printing: " + e.getMessage(), e);
+                        }
                         new config.PanelPrinter(indigencyForm.indigencypanel).printPanel();
                         break;
-                        case "barangay certificate of residency":
+                    case "barangay certificate of residency":
                         CERTIFICATES.residency residencyForm = new CERTIFICATES.residency();
                         residencyForm.setName(fname + " " + lname);
                         residencyForm.setPurok("Purok 1"); // Placeholder
                         residencyForm.setBrgyCaptani("Baranggay Captain"); // Placeholder
                         residencyForm.setVisible(true);
+                        try {
+                           logger.logToDatabase(logCon, sess.getUid(), "Printed Barangay Certificate of Residency", logger.LogLevel.INFO);
+                            logger.info("Citizen Printed Barangay Certificate of Residency (User ID: " + sess.getUid() + ")");
+                        } catch (Exception e) {
+                            logger.error("Failed to log residency printing: " + e.getMessage(), e);
+                        }
                         new config.PanelPrinter(residencyForm.residencypanel).printPanel();
                         break;
-                        default:
+                    default:
                         JOptionPane.showMessageDialog(this, "Unsupported document type: " + docType);
                         break;
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Request details not found.");
                 }
+            } else {
+                JOptionPane.showMessageDialog(this, "Request details not found.");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error printing request: " + e.getMessage());
             e.printStackTrace();
+        } finally {
+            try {
+                if (con != null && !con.isClosed()) con.close();
+                if (logCon != null && !logCon.isClosed()) logCon.close();
+            } catch (Exception e) {
+                logger.error("Error closing connections: " + e.getMessage(), e);
+            }
         }
     }//GEN-LAST:event_printRequestActionPerformed
 

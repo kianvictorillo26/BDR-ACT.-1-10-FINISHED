@@ -396,7 +396,7 @@ public class adminDashBoard extends javax.swing.JFrame {
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
         Session sess = Session.getInstance();
-        logger.logToDatabase(sess.getUid(), "User logged out");
+        logger.logToDatabase(Integer.valueOf(sess.getUid()), "User logged out", logger.LogLevel.INFO);
         logger.info("User logged out: " + sess.getUid());
         new loginForm().setVisible(true);  
         this.dispose();

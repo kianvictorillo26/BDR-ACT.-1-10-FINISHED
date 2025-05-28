@@ -99,10 +99,10 @@ public static boolean logAcc(String username, String password) {
                     }
                 }
                 
-                // Log user login
-                logger.logToDatabase(sess.getUid(), "User logged in");
-                logger.info("User logged in: " + sess.getUid());
-                
+                    // Log user login
+                    logger.logToDatabase(Integer.valueOf(sess.getUid()), "User logged in", logger.LogLevel.INFO);
+                    logger.info("User logged in: " + sess.getUid());
+                        
                 // Do not close connection here; let caller manage connection lifecycle
                 
                 return true;

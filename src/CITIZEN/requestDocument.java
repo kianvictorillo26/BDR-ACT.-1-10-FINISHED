@@ -10,6 +10,7 @@ import ADMIN.Documents.*;
 import ADMIN.adminDashBoard;
 import ADMIN.Documents.manageDocuments;
 import config.Session;
+import config.logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -216,57 +217,78 @@ public class requestDocument extends javax.swing.JFrame {
         }
 
         String status = "Pending";
+        Connection con = null;
+        Connection logCon = null;
 
         try {
             config.config db = new config.config();
-            try (Connection con = db.getConnection()) {
-                // Get citizen_id from citizens table using U_Id
-                String getCitizenIdSql = "SELECT citizen_id FROM citizens WHERE U_Id = ?";
-                PreparedStatement getCitizenIdPst = con.prepareStatement(getCitizenIdSql);
-                getCitizenIdPst.setInt(1, userId);
-                java.sql.ResultSet rsCitizen = getCitizenIdPst.executeQuery();
-                int citizenId = 0;
-                if (rsCitizen.next()) {
-                    citizenId = rsCitizen.getInt("citizen_id");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Citizen record not found for user.");
+            con = db.getConnection();
+            
+            // Get citizen_id from citizens table using U_Id
+            String getCitizenIdSql = "SELECT citizen_id FROM citizens WHERE U_Id = ?";
+            PreparedStatement getCitizenIdPst = con.prepareStatement(getCitizenIdSql);
+            getCitizenIdPst.setInt(1, userId);
+            java.sql.ResultSet rsCitizen = getCitizenIdPst.executeQuery();
+            int citizenId = 0;
+            if (rsCitizen.next()) {
+                citizenId = rsCitizen.getInt("citizen_id");
+            } else {
+                JOptionPane.showMessageDialog(this, "Citizen record not found for user.");
+                return;
+            }
+
+            // Check if citizen_id exists in citizens table
+            String checkSql = "SELECT COUNT(*) FROM citizens WHERE citizen_id = ?";
+            PreparedStatement checkPst = con.prepareStatement(checkSql);
+            checkPst.setInt(1, citizenId);
+            java.sql.ResultSet rs = checkPst.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                if (count == 0) {
+                    JOptionPane.showMessageDialog(this, "Citizen does not exist.");
                     return;
                 }
+            } else {
+                JOptionPane.showMessageDialog(this, "Error verifying citizen.");
+                return;
+            }
 
-                // Check if citizen_id exists in citizens table
-                String checkSql = "SELECT COUNT(*) FROM citizens WHERE citizen_id = ?";
-                PreparedStatement checkPst = con.prepareStatement(checkSql);
-                checkPst.setInt(1, citizenId);
-                java.sql.ResultSet rs = checkPst.executeQuery();
-                if (rs.next()) {
-                    int count = rs.getInt(1);
-                    if (count == 0) {
-                        JOptionPane.showMessageDialog(this, "Citizen does not exist.");
-                        return;
+            String sql = "INSERT INTO requests (citizen_id, doc_id, status) VALUES (?, ?, ?)";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setInt(1, citizenId);
+            pst.setInt(2, docId);
+            pst.setString(3, status);
+
+            int result = pst.executeUpdate();
+            if (result > 0) {
+                // Create a separate connection for logging
+                logCon = new config.config().getConnection();
+                if (logCon != null) {
+                    try {
+                        // Log the document request
+                        logger.logToDatabase(logCon, userId, "Document Request: " + selectedDoc, logger.LogLevel.INFO);
+                        logger.info("Citizen Requested a Document: " + selectedDoc + " (User ID: " + userId + ")");
+                    } catch (Exception e) {
+                        logger.error("Failed to log document request: " + e.getMessage(), e);
                     }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Error verifying citizen.");
-                    return;
                 }
-
-                String sql = "INSERT INTO requests (citizen_id, doc_id, status) VALUES (?, ?, ?)";
-                PreparedStatement pst = con.prepareStatement(sql);
-                pst.setInt(1, citizenId);
-                pst.setInt(2, docId);
-                pst.setString(3, status);
-
-                int result = pst.executeUpdate();
-                if (result > 0) {
-                    JOptionPane.showMessageDialog(this, "Request submitted successfully!");
-                    new citizenDashBoard().setVisible(true);
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Failed to submit request!");
-                }
+                
+                JOptionPane.showMessageDialog(this, "Request submitted successfully!");
+                new citizenDashBoard().setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to submit request!");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
             e.printStackTrace();
+        } finally {
+            try {
+                if (con != null && !con.isClosed()) con.close();
+                if (logCon != null && !logCon.isClosed()) logCon.close();
+            } catch (Exception e) {
+                logger.error("Error closing connections: " + e.getMessage(), e);
+            }
         }
     }//GEN-LAST:event_requestDocumentMouseClicked
 
